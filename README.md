@@ -60,7 +60,10 @@ yarn server or npm run server
 ```sh
 .
 ├── dist
-│   └── main.bundle.js
+│   ├── js
+│   │   └── main.bundle.js
+│   └── main.bundle.css
+│
 ├── node_modules
 ├── src
 │   ├── css

@@ -3,7 +3,7 @@ const loaders = require('./loaders');
 const plugins = require('./plugins');
 
 module.exports = {
-    entry: ["../src/js/main.js"],
+    entry: "./src/js/main.js",
     module: {
         rules: [
             loaders.CSSLoader,
@@ -14,7 +14,7 @@ module.exports = {
         plugins.MiniCssExtractPlugin,
     ],
     output: {
-        path: path.resolve(__dirname, "dist"),
+        path: path.resolve(__dirname, "../dist"),
         filename: "js/[name].bundle.js"
     },
 };
