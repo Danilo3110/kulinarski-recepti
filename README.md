@@ -1,9 +1,9 @@
 # Projekat - Baza kulinarskih recepata - 
 
-![build-shield]
-![code-clean]
-![dependencies]
-![browsers]
+[![build-shield]](#)
+[![code-clean]](#)
+[![dependencies]](#)
+[![browsers]](#)
 
 
 <br />
@@ -29,9 +29,9 @@
 <p align="center">
     <img src="./forReadme/visualstudiocode.png" alt="Logo" width="300" height="150">
 
-![html]&nbsp;
-![css]&nbsp;
-![js]&nbsp;
+[![html]](#)&nbsp;
+[![css]](#)&nbsp;
+[![js]](#)&nbsp;
 [![jquery]](https://jquery.com)&nbsp;
 [![json]](https://my-json-server.typicode.com/)&nbsp;
 [![webpack]](https://webpack.js.org/)&nbsp;
@@ -96,7 +96,7 @@ yarn server or npm run server
 
 > Project Link: [Git Hub Repo](https://github.com/Danilo3110/kulinarski-recepti)
 
-<br><br>
+<br>
 
 ## Acknowledgements
 
