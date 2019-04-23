@@ -1,5 +1,5 @@
 {
-  "listings": [{
+  "recepies": [{
     "listingCreated": "28.3.2019. 18:22:44",
     "listingChecked": "28.3.2019. 23:22:44",
     "listingNumber": 117,
@@ -31,7 +31,6 @@
       "name": "Danilo L.",
       "email": "lukic3@sbb.rs",
       "password": "danilo31",
-      "address": "Patrisa Lumumbe",
       "city": "Beograd, Srbija",
       "telephone": "011/2798-515",
       "id": 1,
@@ -41,7 +40,6 @@
       "name": "Nikola",
       "email": "nikola.muncan@gmail.com",
       "password": "djole123",
-      "address": "Trg Oslobodjenja bb",
       "city": "Zemun",
       "telephone": "011/555-333",
       "id": 2,

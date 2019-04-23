@@ -84,6 +84,7 @@ yarn server or npm run server
 │   └── webpack.config.js
 │
 ├── .gitignore
+├── babel.config.js
 ├── db.json
 ├── package.json
 ├── README.md

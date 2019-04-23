@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" type="image/ico" sizes="32x32" href="Favicon.ico">
-    <link rel="stylesheet" href="../dist/main.bundle.css">
+    <link rel="stylesheet" href="./css/main.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans%7CQuicksand%7CRoboto:100" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
         integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
@@ -17,7 +17,173 @@
 </head>
 
 <body>
-
+    <div class="container">
+        <div class="logo">
+            <a href="index.html"><img src="" alt="logo"></a>
+        </div>
+        <div class="menu">
+            <ul>
+                <li><a href="#" id="recipes_showAll">Recepti</a></li>
+                <li><a href="#">O&nbsp;nama</a></li>
+                <li><a href="#">Kontakt</a></li>
+            </ul>
+        </div>
+        <div class="login">
+            <a href="register.html"><i title="Registracija korisnika" class="fas fa-user-plus fa-lg"></i></a>
+            <span id="logIn-out"><i title="Prijava korisnika" class="fas fa-sign-in-alt fa-lg"></i></span>
+            <div id="login-content">
+                <div class="login-img"><img src="" alt="logo"></div>
+                <div class="login-title">
+                    <h2>Prijavite&nbsp;se&nbsp;na&nbsp;vaš&nbsp;nalog</h2>
+                </div>
+                <div class="login-container">
+                    <input type="text" id="userEmail" placeholder="E-mail&nbsp;korisnika">&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="password" id="pass" placeholder="Lozinka"><br>
+                    <span id="alert"></span>
+                    <button type="submit" id="logIn">Prijavi&nbsp;se</button><br>
+                    <a href="register.html">
+                        <h5>Niste&nbsp;registrovani?</h5>
+                    </a>
+                </div>
+            </div>
+            <a href="#" id="userPanel"><i title="Korisnički panel" class="fas fa-users fa-lg"></i></a>
+        </div>
+        <div class="item4">
+            <button type="submit"><i class="far fa-plus-square fa-lg"></i>&nbsp;&nbsp;Dodaj&nbsp;recept</button>
+        </div>
+        <div class="main" id="basicSearch">
+            <h1>Začini&nbsp;srcem,&nbsp;zakuvaj&nbsp;znanjem!</h1>
+            <h4>Kuvajte,&nbsp;nikad&nbsp;lakše,&nbsp;uz&nbsp;pomoc&nbsp;brzih&nbsp;recepata&nbsp;i&nbsp;delite&nbsp;svoje&nbsp;kulinarsko&nbsp;znanje&nbsp;sa&nbsp;drugima!
+            </h4>
+            <select name="category" id="category">
+                <option value="" selected disabled>Sve&nbsp;kategorije</option>
+                <option value="Hladna predjela">Hladna predjela</option>
+                <option value="Topla predjela">Topla predjela</option>
+                <option value="Supe i čorbe">Supe i čorbe</option>
+                <option value="Salate">Salate</option>
+                <option value="Pite i testa">Pite i testa</option>
+                <option value="Glavna jela">Glavna jela</option>
+                <option value="Riba i morski plodovi">Riba i morski plodovi</option>
+                <option value="Sosovi">Sosovi</option>
+                <option value="Torte">Torte</option>
+                <option value="Kolači">Kolači</option>
+                <option value="Zimnica">Zimnica</option>
+            </select>
+            <select name="kitchen" id="kitchen">
+                <option value="" selected disabled>Sve&nbsp;kuhinje</option>
+                <option value="Univerzalna">Univerzalna</option>
+                <option value="Srpska">Srpska</option>
+                <option value="Grčka">Grčka</option>
+                <option value="Bosanska">Bosanska</option>
+                <option value="Italijanska">Italijanska</option>
+                <option value="Španska">Španska</option>
+                <option value="Mađarska">Mađarska</option>
+                <option value="Kineska">Kineska</option>
+                <option value="Indijska">Indijska</option>
+                <option value="Ruska">Ruska</option>
+                <option value="Francuska">Francuska</option>
+                <option value="Turska">Turska</option>
+                <option value="Nemačka">Nemačka</option>
+            </select>
+            <input type="text" placeholder="Unesite recept koji trazite" id="title_like">
+            <button type="submit" id="searchrecipesAll">Pretraži</button><br>
+            <a id="aSearch">Napredna&nbsp;pretraga&nbsp;<i class="fas fa-search fa-xs"></i></a>
+        </div>
+        <div class="category">
+            <div id="category-wrap">
+                <span>
+                    <div id="cook1"><i class="fas fa-concierge-bell fa-lg"></i>
+                        <hr>Hladna predjela
+                    </div>
+                </span>
+                <span>
+                    <div id="cook2"><i class="fas fa-concierge-bell fa-lg"></i>
+                        <hr>Salate
+                    </div>
+                </span>
+                <span>
+                    <div id="cook3"><i class="fas fa-concierge-bell fa-lg"></i>
+                        <hr>Glavna jela
+                    </div>
+                </span>
+                <span>
+                    <div id="cook4"><i class="fas fa-concierge-bell fa-lg"></i>
+                        <hr>Torte
+                    </div>
+                </span>
+            </div>
+        </div>
+        <div class="item-search show"><br>
+            <h4>Napredna&nbsp;pretraga:</h4>
+            <hr>
+            <form id="advancedSearch">
+                <input type="number" id="timePrep_gte" min="1" step="1" name="timePrep"
+                    placeholder="Vreme pripreme (min)">
+                <input type="number" id="timePrep_lte" min="1" step="1" name="timePrep_max"
+                    placeholder="Vreme pripreme (max)">
+                <br>
+                <select name="preparation" id="preparation">
+                    <option value="" selected disabled>Težina&nbsp;pripreme</option>
+                    <option value="Lako">Lako</option>
+                    <option value="Srednje">Srednje</option>
+                    <option value="Teško">Teško</option>
+                </select>
+                <select name="personNumber" id="personNumber">
+                    <option value="" selected disabled>Broj&nbsp;osoba:</option>
+                    <option value="1 osoba">1 osoba</option>
+                    <option value="2 osobe">2 osobe</option>
+                    <option value="3 osobe">3 osobe</option>
+                    <option value="4 osobe">4 osobe</option>
+                    <option value="5 osoba">5 osoba</option>
+                    <option value="6 osoba">6 osoba</option>
+                    <option value="7 osoba">7 osoba</option>
+                    <option value="8 osoba">8 osoba</option>
+                    <option value="9 osoba">9 osoba</option>
+                    <option value="10 osoba">10 osoba</option>
+                    <option value="11 osoba">11 osoba</option>
+                    <option value="12 osoba">12 osoba</option>
+                </select>
+                <input type="text" name="recipeNumber" id="recipeNumber" placeholder="Šifra recepta">
+                <hr>
+                <h5>Ostalo</h5>
+                <ul>
+                    <li><input type="checkbox" name="options" value="Posno" id="posno">
+                        <label for="posno">Posna&nbsp;jela</label></li>
+                    <li> <input type="checkbox" name="options" value="Vegeterijanski" id="vegeterijanski">
+                        <label for="vegeterijanski">Vegeterijanski&nbsp;recepti</label></li>
+                </ul>
+                <hr><br>
+                <button type="reset">Resetuj</button>&nbsp;<button type="button" id="searchrecipesAll_2">Pretraži</button>
+                <br>
+            </form>
+            <a id="closeSearch">Manje&nbsp;opcija&nbsp;<i class="fas fa-search fa-xs"></i></a>
+        </div>
+        <div class="item7">
+            <h1 class="recipes-click-scroll">Najnoviji&nbsp;recepti</h1>
+            <div class="recipes-container"></div>
+        </div>
+        <div class="item8">
+            <div class="footer-container">
+                <div class="footer">
+                    <img src="" alt="logo"><br>
+                    <h4>Projekat kulinarski recepti</h4>
+                    <div>
+                        &COPY;&nbsp;Danilo Lukić<br>
+                    </div>
+                </div>
+                <div class="footer">
+                    <h4>Brzi&nbsp;linkovi</h4>
+                    <a href="#">Često&nbsp;postavljana&nbsp;pitanja</a><br><br>
+                </div>
+                <div class="footer">
+                    <h4>Novi&nbsp;recepti&nbsp;svaki&nbsp;dan&nbsp;na&nbsp;vašem&nbsp;email-u!<br>&nbsp;Pretplatite se!
+                    </h4>
+                    <input type="text" placeholder="unesite e-mail ovde">
+                    <button type="submit">Pretplati&nbsp;se</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
