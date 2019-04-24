@@ -1,16 +1,105 @@
 {
   "recipes": [{
-    "listingCreated": "28.3.2019. 18:22:44",
-    "listingChecked": "28.3.2019. 23:22:44",
-    "listingNumber": 117,
-    "authorId": 1,
-    "category": "",
-    "title": "",
-    "imgUrl": [
-      "img.jpg"
-    ],
-    "id": 1
-  }],
+      "recipeCreated": "24.4.2019. 12:22:44",
+      "recipeChecked": "24.4.2019. 18:46:44",
+      "recipeNumber": 117,
+      "authorId": 1,
+      "category": "Glavna jela",
+      "kitchen": "Srpska",
+      "preparation": "Lako",
+      "personNumber": "4 osobe",
+      "timePrep": 35,
+      "posno": false,
+      "vegetarijanski": false,
+      "title": "Piletina sa šampinjonima",
+      "recipeInfo": "",
+      "imgUrl": [
+        "img/piletina sa sampinjonima.jpg"
+      ],
+      "qty_1": 500,
+      "ingredient_1": "Belo meso",
+      "qty_2": 500,
+      "ingredient_2": "Šampinjoni",
+      "step_1": "Iseckati crni luk zajedno sa belim lukom i šargarepom (na kockice). Propržiti.",
+      "step_2": "U drugoj posudi pripremiti belo meso. Odvojiti ga od kostiju i iseći na manje šnicle.",
+      "id": 1
+    },
+    {
+      "recipeCreated": "24.4.2019. 12:22:44",
+      "recipeChecked": "24.4.2019. 18:46:44",
+      "recipeNumber": 324,
+      "authorId": 1,
+      "category": "Glavna jela",
+      "kitchen": "Srpska",
+      "preparation": "Lako",
+      "personNumber": "4 osobe",
+      "timePrep": 35,
+      "posno": false,
+      "vegetarijanski": false,
+      "title": "Piletina sa šampinjonima",
+      "recipeInfo": "",
+      "imgUrl": [
+        "img/piletina sa sampinjonima.jpg"
+      ],
+      "qty_1": 500,
+      "ingredient_1": "Belo meso",
+      "qty_2": 500,
+      "ingredient_2": "Šampinjoni",
+      "step_1": "Iseckati crni luk zajedno sa belim lukom i šargarepom (na kockice). Propržiti.",
+      "step_2": "U drugoj posudi pripremiti belo meso. Odvojiti ga od kostiju i iseći na manje šnicle.",
+      "id": 2
+    },
+    {
+      "recipeCreated": "24.4.2019. 12:22:44",
+      "recipeChecked": "24.4.2019. 18:46:44",
+      "recipeNumber": 512,
+      "authorId": 2,
+      "category": "Glavna jela",
+      "kitchen": "Srpska",
+      "preparation": "Lako",
+      "personNumber": "4 osobe",
+      "timePrep": 35,
+      "posno": false,
+      "vegetarijanski": false,
+      "title": "Piletina sa šampinjonima",
+      "recipeInfo": "",
+      "imgUrl": [
+        "img/piletina sa sampinjonima.jpg"
+      ],
+      "qty_1": 500,
+      "ingredient_1": "Belo meso",
+      "qty_2": 500,
+      "ingredient_2": "Šampinjoni",
+      "step_1": "Iseckati crni luk zajedno sa belim lukom i šargarepom (na kockice). Propržiti.",
+      "step_2": "U drugoj posudi pripremiti belo meso. Odvojiti ga od kostiju i iseći na manje šnicle.",
+      "id": 3
+    },
+    {
+      "recipeCreated": "24.4.2019. 12:22:44",
+      "recipeChecked": "24.4.2019. 18:46:44",
+      "recipeNumber": 1423,
+      "authorId": 1,
+      "category": "Glavna jela",
+      "kitchen": "Srpska",
+      "preparation": "Lako",
+      "personNumber": "4 osobe",
+      "timePrep": 35,
+      "posno": false,
+      "vegetarijanski": false,
+      "title": "Piletina sa šampinjonima",
+      "recipeInfo": "",
+      "imgUrl": [
+        "img/piletina sa sampinjonima.jpg"
+      ],
+      "qty_1": 500,
+      "ingredient_1": "Belo meso",
+      "qty_2": 500,
+      "ingredient_2": "Šampinjoni",
+      "step_1": "Iseckati crni luk zajedno sa belim lukom i šargarepom (na kockice). Propržiti.",
+      "step_2": "U drugoj posudi pripremiti belo meso. Odvojiti ga od kostiju i iseći na manje šnicle.",
+      "id": 4
+    }
+  ],
   "users": [{
       "name": "Danilo L.",
       "email": "lukic3@sbb.rs",
