@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="sr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" type="image/ico" sizes="32x32" href="Favicon.ico">
+    <link rel="stylesheet" href="./css/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans%7CQuicksand%7CRoboto:100" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+        integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <script src="./js/vendor/jquery.js"></script>
+    <script src="../node_modules/axios/dist/axios.js"></script>
+    <script src="./js/main.js" defer></script>
+    <title>Registracija</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="logo">
+            <a href="index.html"><img src="./img/logo3.png" alt="logo"></a>
+        </div>
+        <div class="menu">
+            <ul>
+                <li><a href="#" id="recipes_showAll">Recepti</a></li>
+                <li><a href="#">O&nbsp;nama</a></li>
+                <li><a href="#">Kontakt</a></li>
+            </ul>
+        </div>
+        <div class="login">
+            <a href="register.html"><i title="Registracija korisnika" class="fas fa-user-plus fa-lg"></i></a>
+            <span id="logIn-out"><i title="Prijava korisnika" class="fas fa-sign-in-alt fa-lg"></i></span>
+            <div id="login-content">
+                <div class="login-img"><img src="./img/logo3.png" alt="logo"></div>
+                <div class="login-title">
+                    <h2>Prijavite&nbsp;se&nbsp;na&nbsp;vaš&nbsp;nalog</h2>
+                </div>
+                <div class="login-container">
+                    <input type="text" id="userEmail" placeholder="E-mail&nbsp;korisnika">&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="password" id="pass" placeholder="Lozinka"><br>
+                    <span id="alert"></span>
+                    <button type="submit" id="logIn">Prijavi&nbsp;se</button><br>
+                    <a href="register.html">
+                        <h5>Niste&nbsp;registrovani?</h5>
+                    </a>
+                </div>
+            </div>
+            <a href="#" id="userPanel"><i title="Korisnički panel" class="fas fa-users fa-lg"></i></a>
+        </div>
+        <div class="item4">
+            <button type="submit"><i class="far fa-plus-square fa-lg"></i>&nbsp;&nbsp;Dodaj&nbsp;recept</button>
+        </div>
+        <div class="content"><br>
+            <h2>Registracija novog korisnika</h2>
+            <hr><br>
+            <form id="writeRecipe">
+                <div class="form-container">
+                    <div class="form-left"><br>
+                        <input type="text" name="name" placeholder="Ime i prezime" required>
+                        <span class="validity"></span><br>
+                        <input type="email" name="email" placeholder="e-mail" required>
+                        <span class="validity"></span><br>
+                        <input type="password" name="password" placeholder="Lozinka" required>
+                        <span class="validity"></span><br>
+                        <input type="password" name="passwordRepeat" placeholder="Ponovite&nbsp;lozinku" required>
+                        <span class="validity"></span><br>
+                        <hr>
+                    </div>
+                    <div class="form-right"><br>
+                        <input type="text" name="work" placeholder="Zanimanje" required>
+                        <span class="validity"></span><br>
+                        <select name="city" required>
+                            <option value="" disabled selected>Mesto</option>
+                            <option value="Beograd">Beograd</option>
+                            <option value="Kragujevac">Kragujevac</option>
+                            <option value="Jagodina">Jagodina</option>
+                            <option value="Niš">Niš</option>
+                            <option value="Pirot">Pirot</option>
+                            <option value="Loznica">Loznica</option>
+                            <option value="Leskovac">Leskovac</option>
+                            <option value="Vranje">Vranje</option>
+                            <option value="Zaječar">Zaječar</option>
+                            <option value="Bor">Bor</option>
+                            <option value="Smederevo">Smederevo</option>
+                            <option value="Požarevac">Požarevac</option>
+                            <option value="Šabac">Šabac</option>
+                            <option value="Valjevo">Valjevo</option>
+                            <option value="Čačak">Čačak</option>
+                            <option value="Kraljevo">Kraljevo</option>
+                            <option value="Kruševac">Kruševac</option>
+                            <option value="Užice">Užice</option>
+                            <option value="Novi Sad">Novi&nbsp;Sad</option>
+                            <option value="Sombor">Sombor</option>
+                            <option value="Subotica">Subotica</option>
+                            <option value="Vrbas">Vrbas</option>
+                            <option value="Kikinda">Kikinda</option>
+                            <option value="Zrenjanin">Zrenjanin</option>
+                            <option value="Pančevo">Pančevo</option>
+                            <option value="Vršac">Vršac</option>
+                            <option value="Ruma">Ruma</option>
+                            <option value="Sremska Mitrovica">Sremska&nbsp;Mitrovica</option>
+                            <option value="Aranđelovac">Aranđelovac</option>
+                            <option value="Negotin">Negotin</option>
+                            <option value="Kladovo">Kladovo</option>
+                            <option value="Šid">Šid</option>
+                            <option value="Aleksinac">Aleksinac</option>
+                            <option value="Kuršumlija">Kuršumlija</option>
+                            <option value="Prokuplje">Prokuplje</option>
+                            <option value="Majdanpek">Majdanpek</option>
+                            <option value="Novi Pazar">Novi&nbsp;Pazar</option>
+                        </select>
+                        <span class="validity"></span><br>
+                        <input type="tel" name="telephone" placeholder="Telefon" required>
+                        <span class="validity"></span><br>
+                        <textarea class="biography" name="biography" cols="50" rows="10"
+                            placeholder="Biografija"></textarea><br>
+                        <hr>
+                    </div>
+                </div>
+                <hr>
+                <button type="reset">Resetuj&nbsp;sve</button>&nbsp;&nbsp;&nbsp;
+                <button type="button" id="createUser">REGISTRUJ&nbsp;SE</button>
+                <hr>
+            </form>
+        </div>
+        <div class="item8">
+            <div class="footer-container">
+                <div class="footer">
+                    <img src="./img/logo3.png" alt="logo"><br>
+                    <h4>Projekat&nbsp;-&nbsp;Vrhunski&nbsp;recepti</h4>
+                    <div>
+                        &COPY;&nbsp;Copyright&nbsp;2019&nbsp;-&nbsp;by&nbsp;Danilo&nbsp;Lukić<br>
+                    </div>
+                </div>
+                <div class="footer">
+                    <h4>Brzi&nbsp;linkovi</h4>
+                    <a href="#">Često&nbsp;postavljana&nbsp;pitanja</a><br><br>
+                </div>
+                <div class="footer">
+                    <h4>Novi&nbsp;recepti&nbsp;svaki&nbsp;dan&nbsp;na&nbsp;vašem&nbsp;email-u!<br>&nbsp;Pretplatite se!
+                    </h4>
+                    <input type="text" placeholder="unesite e-mail ovde">
+                    <button type="submit">Pretplati&nbsp;se</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

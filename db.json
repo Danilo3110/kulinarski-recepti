@@ -1,38 +1,24 @@
 {
-  "recepies": [{
+  "recipes": [{
     "listingCreated": "28.3.2019. 18:22:44",
     "listingChecked": "28.3.2019. 23:22:44",
     "listingNumber": 117,
     "authorId": 1,
     "category": "",
     "title": "",
-    "additionalinfo": "",
     "imgUrl": [
       "img.jpg"
     ],
-    "price": 93850,
-    "m2": 43.75,
-    "publicTransport": "12, 13, 23, 37, 49, 51, 52, 53, 57, 58, 85, 87, 88, ADA1, E2, E5",
-    "options": "Terasa, Kablovska, Lift",
-    "mapa": false,
-    "podrum": false,
-    "parking": false,
-    "garaza": false,
-    "terasa": true,
-    "dvoriste": false,
-    "internet": false,
-    "kablovska": true,
-    "telefon": false,
-    "klima": false,
-    "lift": true,
     "id": 1
   }],
   "users": [{
       "name": "Danilo L.",
       "email": "lukic3@sbb.rs",
       "password": "danilo31",
-      "city": "Beograd, Srbija",
+      "work": "Elektrotehničar telekomunikacija",
+      "city": "Beograd",
       "telephone": "011/2798-515",
+      "biography": "",
       "id": 1,
       "favorites": []
     },
@@ -40,8 +26,10 @@
       "name": "Nikola",
       "email": "nikola.muncan@gmail.com",
       "password": "djole123",
-      "city": "Zemun",
+      "work": "",
+      "city": "Beograd",
       "telephone": "011/555-333",
+      "biography": "",
       "id": 2,
       "favorites": []
     }

@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="sr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" type="image/ico" sizes="32x32" href="Favicon.ico">
+    <link rel="stylesheet" href="./css/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans%7CQuicksand%7CRoboto:100" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+        integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <script src="./js/vendor/jquery.js"></script>
+    <script src="../node_modules/axios/dist/axios.js"></script>
+    <script src="./js/main.js" defer></script>
+    <title>Korisnički panel</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="logo">
+            <a href="index.html"><img src="./img/logo3.png" alt="logo"></a>
+        </div>
+        <div class="menu">
+            <ul>
+                <li><a href="#" id="recipes_showAll">Recepti</a></li>
+                <li><a href="#">O&nbsp;nama</a></li>
+                <li><a href="#">Kontakt</a></li>
+            </ul>
+        </div>
+        <div class="login">
+            <a href="register.html"><i title="Registracija korisnika" class="fas fa-user-plus fa-lg"></i></a>
+            <a href="#" id="logIn-out"><i title="Prijava korisnika" class="fas fa-sign-in-alt fa-lg"></i></a>
+            <a href="#" id="userPanel"><i title="Korisnički panel" class="fas fa-users fa-lg"></i></a>
+        </div>
+        <div class="item4">
+            <button type="submit"><i class="far fa-plus-square fa-lg"></i>&nbsp;&nbsp;Dodaj&nbsp;recept</button>
+        </div>
+        <div class="category">
+            <div id="empty">
+                <h2>Korisnički panel</h2>
+            </div>
+            <div id="category-wrap-small" class="small">
+                <a href="user_panel.html">
+                    <div id="cook1"><i class="far fa-edit fa-lg"></i>
+                        <hr>Moji&nbsp;recepti<h6>
+                            Izmeni&nbsp;/&nbsp;obriši</h6>
+                    </div>
+                </a>
+                <a href="#" id="showFavorites">
+                    <div id="cook2"><i class="fas fa-heart fa-lg"></i>
+                        <hr>Omiljeni&nbsp;recepti<h6>Favoriti</h6>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="content"></div>
+        <div class="item8">
+            <div class="footer-container">
+                <div class="footer">
+                    <img src="./img/logo3.png" alt="logo"><br>
+                    <h4>Projekat&nbsp;-&nbsp;Vrhunski&nbsp;recepti</h4>
+                    <div>
+                        &COPY;&nbsp;Copyright&nbsp;2019&nbsp;-&nbsp;by&nbsp;Danilo&nbsp;Lukić<br>
+                    </div>
+                </div>
+                <div class="footer">
+                    <h4>Brzi&nbsp;linkovi</h4>
+                    <a href="#">Često&nbsp;postavljana&nbsp;pitanja</a><br><br>
+                </div>
+                <div class="footer">
+                    <h4>Novi&nbsp;recepti&nbsp;svaki&nbsp;dan&nbsp;na&nbsp;vašem&nbsp;email-u!<br>&nbsp;Pretplatite se!
+                    </h4>
+                    <input type="text" placeholder="unesite e-mail ovde">
+                    <button type="submit">Pretplati&nbsp;se</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

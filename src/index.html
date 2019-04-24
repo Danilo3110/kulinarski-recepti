@@ -12,14 +12,14 @@
         integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <script src="./js/vendor/jquery.js"></script>
     <script src="../node_modules/axios/dist/axios.js"></script>
-    <script src="../dist/js/main.bundle.js" defer></script>
-    <title>Kulinarski recepti</title>
+    <script src="./js/main.js" defer></script>
+    <title>Vrhunski recepti</title>
 </head>
 
 <body>
     <div class="container">
         <div class="logo">
-            <a href="index.html"><img src="" alt="logo"></a>
+            <a href="index.html"><img src="./img/logo3.png" alt="logo"></a>
         </div>
         <div class="menu">
             <ul>
@@ -32,7 +32,7 @@
             <a href="register.html"><i title="Registracija korisnika" class="fas fa-user-plus fa-lg"></i></a>
             <span id="logIn-out"><i title="Prijava korisnika" class="fas fa-sign-in-alt fa-lg"></i></span>
             <div id="login-content">
-                <div class="login-img"><img src="" alt="logo"></div>
+                <div class="login-img"><img src="./img/logo3.png" alt="logo"></div>
                 <div class="login-title">
                     <h2>Prijavite&nbsp;se&nbsp;na&nbsp;vaš&nbsp;nalog</h2>
                 </div>
@@ -52,8 +52,9 @@
             <button type="submit"><i class="far fa-plus-square fa-lg"></i>&nbsp;&nbsp;Dodaj&nbsp;recept</button>
         </div>
         <div class="main" id="basicSearch">
+            <img src="./img/logo2.png" alt="logo" id="home">
             <h1>Začini&nbsp;srcem,&nbsp;zakuvaj&nbsp;znanjem!</h1>
-            <h4>Kuvajte,&nbsp;nikad&nbsp;lakše,&nbsp;uz&nbsp;pomoc&nbsp;brzih&nbsp;recepata&nbsp;i&nbsp;delite&nbsp;svoje&nbsp;kulinarsko&nbsp;znanje&nbsp;sa&nbsp;drugima!
+            <h4>Kuvajte,&nbsp;nikad&nbsp;lakše,&nbsp;uz&nbsp;pomoć&nbsp;brzih&nbsp;recepata&nbsp;i&nbsp;delite&nbsp;svoje&nbsp;kulinarsko&nbsp;znanje&nbsp;sa&nbsp;drugima!
             </h4>
             <select name="category" id="category">
                 <option value="" selected disabled>Sve&nbsp;kategorije</option>
@@ -91,29 +92,29 @@
         </div>
         <div class="category">
             <div id="category-wrap">
-                <span>
+                <a>
                     <div id="cook1"><i class="fas fa-concierge-bell fa-lg"></i>
-                        <hr>Hladna predjela
+                        <hr>Hladna predjela<h6>6&nbsp;novih&nbsp;oglasa</h6>
                     </div>
-                </span>
-                <span>
+                </a>
+                <a>
                     <div id="cook2"><i class="fas fa-concierge-bell fa-lg"></i>
-                        <hr>Salate
+                        <hr>Salate<h6>12&nbsp;novih&nbsp;oglasa</h6>
                     </div>
-                </span>
-                <span>
+                </a>
+                <a>
                     <div id="cook3"><i class="fas fa-concierge-bell fa-lg"></i>
-                        <hr>Glavna jela
+                        <hr>Glavna jela<h6>3&nbsp;nova&nbsp;oglasa</h6>
                     </div>
-                </span>
-                <span>
+                </a>
+                <a>
                     <div id="cook4"><i class="fas fa-concierge-bell fa-lg"></i>
-                        <hr>Torte
+                        <hr>Torte<h6>7&nbsp;novih&nbsp;oglasa</h6>
                     </div>
-                </span>
+                </a>
             </div>
         </div>
-        <div class="item-search show"><br>
+        <div class="item-search show">
             <h4>Napredna&nbsp;pretraga:</h4>
             <hr>
             <form id="advancedSearch">
@@ -129,7 +130,7 @@
                     <option value="Teško">Teško</option>
                 </select>
                 <select name="personNumber" id="personNumber">
-                    <option value="" selected disabled>Broj&nbsp;osoba:</option>
+                    <option value="" selected disabled>Broj&nbsp;osoba</option>
                     <option value="1 osoba">1 osoba</option>
                     <option value="2 osobe">2 osobe</option>
                     <option value="3 osobe">3 osobe</option>
@@ -145,30 +146,30 @@
                 </select>
                 <input type="text" name="recipeNumber" id="recipeNumber" placeholder="Šifra recepta">
                 <hr>
-                <h5>Ostalo</h5>
                 <ul>
                     <li><input type="checkbox" name="options" value="Posno" id="posno">
                         <label for="posno">Posna&nbsp;jela</label></li>
-                    <li> <input type="checkbox" name="options" value="Vegeterijanski" id="vegeterijanski">
-                        <label for="vegeterijanski">Vegeterijanski&nbsp;recepti</label></li>
+                    <li> <input type="checkbox" name="options" value="Vegetarijanski" id="vegetarijanski">
+                        <label for="vegetarijanski">Vegetarijanski&nbsp;recepti</label></li>
                 </ul>
-                <hr><br>
-                <button type="reset">Resetuj</button>&nbsp;<button type="button" id="searchrecipesAll_2">Pretraži</button>
+                <hr>
+                <button type="reset">Resetuj</button>&nbsp;<button type="button"
+                    id="searchrecipesAll_2">Pretraži</button>
                 <br>
             </form>
             <a id="closeSearch">Manje&nbsp;opcija&nbsp;<i class="fas fa-search fa-xs"></i></a>
         </div>
-        <div class="item7">
+        <div class="content"><br>
             <h1 class="recipes-click-scroll">Najnoviji&nbsp;recepti</h1>
             <div class="recipes-container"></div>
         </div>
         <div class="item8">
             <div class="footer-container">
                 <div class="footer">
-                    <img src="" alt="logo"><br>
-                    <h4>Projekat kulinarski recepti</h4>
+                    <img src="./img/logo3.png" alt="logo"><br>
+                    <h4>Projekat&nbsp;-&nbsp;Vrhunski&nbsp;recepti</h4>
                     <div>
-                        &COPY;&nbsp;Danilo Lukić<br>
+                        &COPY;&nbsp;Copyright&nbsp;2019&nbsp;-&nbsp;by&nbsp;Danilo&nbsp;Lukić<br>
                     </div>
                 </div>
                 <div class="footer">

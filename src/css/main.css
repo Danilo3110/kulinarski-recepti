@@ -11,6 +11,8 @@ body {
     background-size: cover;
     background-attachment: fixed;
     background-repeat: no-repeat;
+    transition: 0.05s linear;
+    transition-property: background-position;
     animation: change-background 40s infinite both step-end;
     grid-template-areas: 'logo menu menu login addRecipe''main main main main main''category category category category category''item-search item-search item-search item-search item-search''recipes recipes recipes recipes recipes''footer footer footer footer footer';
 }
@@ -46,7 +48,7 @@ body {
 
 .logo img {
     padding-left: 10vw;
-    width: 10vw;
+    width: 5vw;
 }
 
 .menu {
@@ -139,7 +141,9 @@ button:hover {
     background-color: rgb(151, 11, 91);
 }
 
-input {
+input,
+textarea,
+select {
     font-family: Montserrat, Georgia, serif;
     font-size: 1vw;
     padding: 12px 20px;
@@ -226,6 +230,12 @@ select {
     padding-bottom: 39vh;
 }
 
+.main-publish-ad {
+    grid-area: main;
+    text-align: center;
+    color: white;
+}
+
 .main input {
     width: 20%;
 }
@@ -252,12 +262,18 @@ select {
     color: rgb(151, 11, 91);
 }
 
+.main img {
+    width: 12%;
+    cursor: pointer;
+}
+
 .category {
     grid-area: category;
     background-color: #F9F9F9;
 }
 
-#category-wrap {
+#category-wrap,
+#category-wrap-small {
     box-shadow: 0 -12px 10px 0 rgba(42, 47, 54, .3);
     background-color: #F9F9F9;
     border-radius: 4px;
@@ -270,8 +286,15 @@ select {
     margin-top: -15vh;
 }
 
-#category-wrap span {
+#category-wrap-small {
+    margin: auto;
+    width: 32%;
+}
+
+#category-wrap a,
+#category-wrap-small a {
     cursor: pointer;
+    text-decoration: none;
     color: black;
 }
 
@@ -281,12 +304,13 @@ select {
 #cook4 {
     font-family: Montserrat, Georgia, serif;
     box-sizing: border-box;
-    width: 10vw;
-    height: 18vh;
+    width: 12vw;
+    height: 21vh;
     background-color: #F9F9F9;
     text-align: center;
     padding: 20%;
     border-radius: 4px;
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.10);
 }
 
 #cook1:hover,
@@ -298,24 +322,25 @@ select {
     color: #F9F9F9;
 }
 
-.item7 {
+.content {
     grid-area: recipes;
     background-color: #F9F9F9;
     text-align: center;
 }
 
-.item7 h1 {
+.content h1 {
     color: black;
     box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.10);
     padding: 1% 0;
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-weight: 400;
     font-style: italic;
-    font-size: 5.5vh;
+    font-size: 2.4vw;
     letter-spacing: 1px;
 }
 
-.recipes-container {
+.recipes-container,
+.user-container {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -343,7 +368,7 @@ hr {
 }
 
 .item8 img {
-    width: 40%;
+    width: 22%;
 }
 
 .footer-container {
@@ -379,7 +404,9 @@ hr {
     text-align: center;
 }
 
-.show {}
+.show {
+    display: none;
+}
 
 .item-search select,
 .item-search input {
@@ -436,13 +463,80 @@ hr {
 }
 
 .login-img img {
-    width: 30%;
+    width: 15%;
     padding-top: 1%;
 }
 
 .login-title {
     font-size: 0.9vw;
     padding-left: 0 5% 0 5%;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.10);
+    background-color: white;
+    margin: 0 5%;
+    padding-bottom: 1%;
+    border-radius: 4px;
+}
+
+.form-left {
+    margin-left: 14%;
+}
+
+.form-right {
+    margin-right: 14%;
+}
+
+#writeRecipe select,
+#writeRecipe input {
+    width: 25vw;
+}
+
+#writeRecipe textarea {
+    resize: none;
+    width: 20vw;
+    text-align: justify;
+    font-family: Montserrat, Georgia, serif;
+}
+
+#writeRecipe ul li {
+    list-style-type: none;
+    padding: 6px;
+    display: inline-flex;
+}
+
+#writeRecipe button {
+    width: 15vw;
+    padding: 12px 20px;
+    margin: 8px 0;
+}
+
+.editAd,
+.deleteAd {
+    width: 42%;
+    padding: 4% 8%;
+    margin: 4% 3%;
+}
+
+input:invalid+span:after,
+select:invalid+span:after {
+    content: '✖';
+    font-size: 1vw;
+    padding-left: 5px;
+    color: rgb(181, 68, 132);
+}
+
+input:valid+span:after,
+select:valid+span:after {
+    content: '✓';
+    font-size: 1vw;
+    padding-left: 5px;
+    color: green;
 }
 
 #login-content {
@@ -458,4 +552,9 @@ hr {
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.5);
     border-radius: 4px;
     width: 30vw;
+}
+
+#empty {
+    text-align: center;
+    margin-bottom: 1.5vw;
 }
