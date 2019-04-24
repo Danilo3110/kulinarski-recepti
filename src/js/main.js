@@ -28,8 +28,8 @@ async function _render_one_recipe(recipes, location) {
     for (const rec of recipes) {
         const $recipeContainer = $(`${location}`);
         const $recipe = $(`<div class="recipes" id="${rec.id}">
-                    <div class="recipes-descr">
-                        <h3>Datum objave: ${(rec.recipeCreated).slice(0, 10)}<i class="fas fa-share-alt fa-lg"></i>
+                    <div class="recipes-descr fav">
+                        <h3>Datum objave: ${(rec.recipeCreated).slice(0, 10)}<i title="Podeli sa drugima" class="fas fa-share-alt fa-lg"></i>
                         <span id="fav_${rec.id}"><i title="Dodaj u omiljene" class="far fa-heart fa-lg offHeart"></i></span>
                         </h3>
                     </div>
@@ -38,7 +38,7 @@ async function _render_one_recipe(recipes, location) {
                         <h3 class="recipes-ctgr">${rec.category}</h3>
                         <h2 class="recipes-descr" id="recipes-height">${rec.title}</h2><br>
                         <hr>
-                        <h3 class="recipes-descr"><i class="fas fa-stopwatch fa-lg"></i>&nbsp;${rec.timePrep}&nbsp;&nbsp;&nbsp;
+                        <h3 class="recipes-descr"><i class="fas fa-stopwatch fa-lg"></i>&nbsp;${rec.timePrep}&nbsp;min&nbsp;&nbsp;&nbsp;
                         <i class="fas fa-utensils fa-lg"></i>&nbsp;${rec.preparation}</h3>
                     </div>
                 </div>`);
@@ -73,6 +73,27 @@ function animationsAll() {
     });
 };
 
+async function postIntoDatabase(location, obj, message) {
+    return await api.post(`/${location}`, obj)
+        .then((response) => alert(`${message}`))
+        .catch((error) => {
+            alert(error);
+        });
+};
+
+function createUser() {
+    const usersObj = {};
+    $("#writeRecipe").find("input, select, textarea").each(function () {
+        usersObj[this.name] = $(this).val();
+    });
+    delete usersObj.passwordRepeat;
+    usersObj['favorites'] = [];
+
+    const message = 'Uspesno ste se registrovali';
+    (async () => await postIntoDatabase('users', usersObj, message))();
+    setTimeout(() => {location.href = 'index.html';}, 500);
+};
+
 async function userLogIn() {
     const $email = $('#userEmail').val();
     const $pass = $('#pass').val();
@@ -93,6 +114,19 @@ async function userLogIn() {
         $('#pass').css('border', '1.5px solid rgb(250, 100, 100)');
         $('#alert').html(`Nije dobar unos podataka za login`).css('color', 'rgb(250, 100, 100)');
     }
+};
+
+function goToUserPanel() {
+    if (localStorage.getItem('validation')) {
+        location.href = 'user_panel.html';
+    } else {
+        alert('Da bi koristili korisnički panel, morate biti ulogovani!');
+    }
+};
+
+function checkUserLogIn() {
+    return localStorage.getItem('validation') ? location.href = 'add_recipe.html' :
+        alert('Da bi dodali vaš kulinarski recept, morate biti ulogovani!');
 };
 
 function addLogOut() {
@@ -125,7 +159,10 @@ function onLoadPageHTML() {
 function eventsAll() {
     $('#recipes_showAll').on('click', renderAllRecipes);
     $('#aSearch, #closeSearch').on('click', advancedSearch);
+    $('.item4 button').on('click', checkUserLogIn);
+    $('#userPanel').on('click', goToUserPanel);
     $('#logIn').on('click', userLogIn);
+    $('#createUser').on('click', createUser);
     $('#logIn-out').on('click', logInOut);
     $('#home').on('click', () => animateFocus('#home'));
 };

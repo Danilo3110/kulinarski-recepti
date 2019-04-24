@@ -108,8 +108,8 @@
       "city": "Beograd",
       "telephone": "011/2798-515",
       "biography": "",
-      "id": 1,
-      "favorites": []
+      "favorites": [],
+      "id": 1
     },
     {
       "name": "Nikola",
@@ -119,8 +119,8 @@
       "city": "Beograd",
       "telephone": "011/555-333",
       "biography": "",
-      "id": 2,
-      "favorites": []
+      "favorites": [],
+      "id": 2
     }
   ]
 }

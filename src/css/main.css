@@ -23,7 +23,7 @@ body {
     }
 
     50% {
-        background-image: url(../img/cover4.jpg);
+        background-image: url(../img/cover6.jpg);
     }
 
     75% {
@@ -119,12 +119,12 @@ body {
     width: 80%;
     padding: 10px 8px;
     margin: 2.5% 0;
-    text-transform: uppercase;
 }
 
 button {
     font-family: Montserrat, Georgia, serif;
     font-size: 1vw;
+    text-transform: uppercase;
     display: inline-block;
     border: 1px solid rgb(181, 68, 132);
     border-radius: 4px;
@@ -242,6 +242,7 @@ select {
     width: 10vw;
     padding: 12px 20px;
     margin: 8px 0;
+    text-transform: none;
 }
 
 .main a,
@@ -259,6 +260,24 @@ select {
 .main img {
     width: 12%;
     cursor: pointer;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    from {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
+
+    50% {
+        -webkit-transform: scale3d(1.05, 1.05, 1.05);
+        transform: scale3d(1.05, 1.05, 1.05);
+    }
+
+    to {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
 }
 
 .category {
@@ -312,7 +331,7 @@ select {
 #cook3:hover,
 #cook4:hover {
     background-color: rgb(181, 68, 132);
-    transition: 0.5s ease;
+    transition: 0.7s ease;
     color: #F9F9F9;
 }
 
@@ -379,6 +398,11 @@ select {
     padding-left: 5%;
 }
 
+.fav i {
+    float: right;
+    padding: 0 2%;
+}
+
 .recipes-ctgr {
     text-align: center;
     text-transform: uppercase;
@@ -388,12 +412,6 @@ select {
     padding: 0;
     text-align: center;
     height: 5%;
-}
-
-.fa-share-alt,
-.fa-heart {
-    float: right;
-    padding: 0 2%;
 }
 
 hr {
@@ -435,6 +453,7 @@ hr {
     width: 42%;
     padding: 12px 20px;
     margin: 8px 0;
+    text-transform: none;
 }
 
 .footer input {
@@ -467,6 +486,7 @@ hr {
     width: 10vw;
     padding: 12px 20px;
     margin: 8px 0;
+    text-transform: none;
 }
 
 #closeSearch {
@@ -479,7 +499,6 @@ hr {
 }
 
 .login-container button {
-    text-transform: uppercase;
     width: 98.5%;
     padding: 12px 20px;
     font-size: 0.9vw;
