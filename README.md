@@ -9,7 +9,7 @@
 <br />
 <p align="center">
   <a href="">
-    <img src="" alt="Logo" width="240" height="60">
+    <img src="./src/img/logo3.png" alt="Logo">
   </a>
 
 <h3 align="center">Web sajt sa bazom kulinarskih recepata</h3>

@@ -230,12 +230,6 @@ select {
     padding-bottom: 39vh;
 }
 
-.main-publish-ad {
-    grid-area: main;
-    text-align: center;
-    color: white;
-}
-
 .main input {
     width: 20%;
 }
@@ -435,6 +429,7 @@ hr {
 }
 
 .login-container button {
+    text-transform: uppercase;
     width: 98.5%;
     padding: 12px 20px;
     font-size: 0.9vw;
@@ -444,7 +439,7 @@ hr {
 .login-container a h5 {
     color: black;
     text-align: center;
-    font-size: 0.8vw;
+    font-size: 0.9vw;
 }
 
 .login-container a {
