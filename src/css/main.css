@@ -108,7 +108,7 @@ body {
 .login a:hover,
 .login #logIn-out:hover {
     color: rgb(181, 68, 132);
-    transition: 0.5s ease;
+    transition: 0.7s ease;
 }
 
 .item4 {
@@ -136,7 +136,7 @@ button {
 }
 
 button:hover {
-    transition: 0.5s ease;
+    transition: 0.7s ease;
     border: 1px solid rgb(151, 11, 91);
     background-color: rgb(151, 11, 91);
 }
@@ -406,6 +406,7 @@ select {
 .recipes-ctgr {
     text-align: center;
     text-transform: uppercase;
+    color: rgba(0, 0, 0, .4);
 }
 
 #recipes-height {
@@ -580,8 +581,8 @@ hr {
     margin: 8px 0;
 }
 
-.editAd,
-.deleteAd {
+.editRecipe,
+.deleteRecipe {
     width: 42%;
     padding: 4% 8%;
     margin: 4% 3%;

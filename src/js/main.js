@@ -149,10 +149,34 @@ function logInOut() {
     }
 };
 
+async function usersRecipes() {
+    const userRecipes = await getBase(`/recipes?authorId=${localStorage.getItem('id')}`);
+    $('.content').append(`<h1 class="recipes-click-scroll">Korisnik: ${localStorage.getItem('user')} - oglasi:</h1>
+                        <div class="user-container"></div>`);
+    await _render_one_recipe(userRecipes, '.user-container');
+    animateFocus('.content');
+    $('.recipes').append(`<button class="editRecipe" type="submit">Izmeni&nbsp;oglas</button>
+                    <button class="deleteRecipe" type="submit">Obriši&nbsp;oglas</button><br>`)
+    $('.deleteRecipe').on('click', () => deleteRecipes('Uspesno ste obrisali vaš oglas!'));
+};
+
+async function deleteRecipes(message) {
+    const recipe = event.currentTarget.parentElement.id;
+    if (confirm('Da li ste sigurni da želite da obrisete odabrani oglas ?')) {
+        return await api.delete(`/recipes/${recipe}`)
+            .then((response) => {alert(`${message}`); location.reload();})
+            .catch((error) => {
+                alert(error);
+            });
+    }
+};
+
 function onLoadPageHTML() {
     const page = location.href;
     if (page.search('/index.html') >= 0) {
         return renderRecipes();
+    } else if (page.search('/user_panel.html') >= 0) {
+        return usersRecipes();
     }
 };
 
