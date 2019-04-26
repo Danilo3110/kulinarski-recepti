@@ -269,6 +269,45 @@ async function deleteRecipes(message) {
     }
 };
 
+async function searchRecipes(location, animation) {
+    const inputsAll = {};
+    $('#advancedSearch, #basicSearch').find('input:not(:checkbox), select').each(function () {
+        if (this.value !== '') {
+            inputsAll[this.id] = this.value;
+        }
+    });
+    $('#advancedSearch').find('input:checked').each(function () {
+        inputsAll[this.id] = this.checked;
+    });
+    const response = await api.get(`/recipes`, {params: inputsAll});
+    const recipesFiltered = response.data;
+
+    $(location).html('');
+    $(animation).html('Rezultati pretrage:');
+    animateFocus(animation);
+    (async () => await _render_one_recipe(recipesFiltered, `${location}`))();
+    loadFavorites();
+};
+
+async function categoryButtons(){
+    let index = 1;
+    const categorys = ['Hladna predjela', 'Salate', 'Glavna jela', 'Torte'];
+    for(const cat of categorys){
+        let recipes = await getBase(`/recipes?category=${cat}`);
+        $(`#cook${index}`).children('h6').html(`Novi&nbsp;recepti: ${recipes.length == undefined ? 0 : recipes.length}`);
+        $(`#cook${index}`).on('click', () => categoryShow(`/recipes?category=${cat}`, cat));
+        index++;
+    }
+};
+
+async function categoryShow(querry, category){
+    const recipes = await getBase(`${querry}&_sort=id&_order=desc`);
+    $('.content').html(`<h1 class="recipes-click-scroll">${category.toUpperCase()}:</h1><div class="recipes-container"></div>`);
+    (async () => await _render_one_recipe(recipes, '.recipes-container'))();
+    animateFocus('#cook4');
+    loadFavorites();
+};
+
 function onLoadPageHTML() {
     const page = location.href;
     if (page.search('/index.html') >= 0) {
@@ -286,6 +325,7 @@ function eventsAll() {
     $('#logIn').on('click', userLogIn);
     $('#createUser').on('click', createUser);
     $('#logIn-out').on('click', logInOut);
+    $('#searchRecipesAll, #searchRecipesAll_2').on('click', () => searchRecipes('.recipes-container', '.recipes-click-scroll'));
     $('#home').on('click', () => animateFocus('#home'));
     $('#plus-ingredient').on('click', addIngredient);
     $('#minus-ingredient').on('click', () => deleteFields('.form-right-1', 'input'));
@@ -293,4 +333,4 @@ function eventsAll() {
     $('#minus-step').on('click', () => deleteFields('.form-right-2', 'textarea'));
 };
 
-$(document).on('load', animateBackground(), onLoadPageHTML(), addLogOut(), eventsAll(), animationsAll(), favorites(), loadFavorites());
+$(document).on('load', animateBackground(), onLoadPageHTML(), addLogOut(), categoryButtons(), eventsAll(), animationsAll(), favorites(), loadFavorites());
