@@ -33,7 +33,7 @@ async function _render_one_recipe(recipes, location) {
                         <span id="fav_${rec.id}"><i title="Dodaj u omiljene" class="far fa-heart fa-lg offHeart"></i></span>
                         </h3>
                     </div>
-                    <img src="${rec.imgUrl[0] == undefined ? './img/image-not-found.jpg' : rec.imgUrl[0]}" alt="recept" class="image_${rec.id}"><br>
+                    <img src="${rec.imgUrl[0] == undefined ? './img/image-not-found.jpg' : rec.imgUrl[0]}" alt="recept" class="image_${rec.id}" title="${rec.title}"><br>
                     <div class="recipe-info">
                         <h3 class="recipes-ctgr">${rec.category}</h3>
                         <h2 class="recipes-descr" id="recipes-height">${rec.title}</h2><br>
@@ -43,7 +43,13 @@ async function _render_one_recipe(recipes, location) {
                     </div>
                 </div>`);
         $recipe.appendTo($recipeContainer);
+        $(`.image_${rec.id}`).on('click', () => fullRecipes(rec.id));
     }
+};
+
+function fullRecipes(id) {
+    sessionStorage.setItem('idOfCardRecipe', id);
+    window.open('recipe.html', '', '');
 };
 
 function animateFocus(toLocation) {
@@ -53,6 +59,19 @@ function animateFocus(toLocation) {
 function advancedSearch() {
     $('.show').slideToggle(800);
     animateFocus('#aSearch');
+};
+
+function animateBackground() {
+    const backgrounds = ['url(../src/img/cover1.jpg)', 'url(../src/img/cover2.jpg)', 'url(../src/img/cover5.jpg)', 'url(../src/img/cover6.jpg)', 'url(../src/img/cover3.jpg)'];
+    let index = 0;
+
+    setInterval(function () {
+        index++;
+        if (index === backgrounds.length) {
+            index = 0;
+        }
+        $('.container').css('background-image', backgrounds[index]);
+    }, 8000);
 };
 
 function animationsAll() {
@@ -91,7 +110,7 @@ function createUser() {
 
     const message = 'Uspesno ste se registrovali';
     (async () => await postIntoDatabase('users', usersObj, message))();
-    setTimeout(() => {location.href = 'index.html';}, 500);
+    setTimeout(() => { location.href = 'index.html'; }, 500);
 };
 
 async function userLogIn() {
@@ -164,10 +183,8 @@ async function deleteRecipes(message) {
     const recipe = event.currentTarget.parentElement.id;
     if (confirm('Da li ste sigurni da želite da obrisete odabrani oglas ?')) {
         return await api.delete(`/recipes/${recipe}`)
-            .then((response) => {alert(`${message}`); location.reload();})
-            .catch((error) => {
-                alert(error);
-            });
+            .then((response) => { alert(`${message}`); location.reload(); })
+            .catch((error) => { alert(error); });
     }
 };
 
@@ -191,4 +208,4 @@ function eventsAll() {
     $('#home').on('click', () => animateFocus('#home'));
 };
 
-$(document).on('load', onLoadPageHTML(), addLogOut(), eventsAll(), animationsAll());
+$(document).on('load', animateBackground(), onLoadPageHTML(), addLogOut(), eventsAll(), animationsAll());

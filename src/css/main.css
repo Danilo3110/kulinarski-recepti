@@ -11,24 +11,9 @@ body {
     background-size: cover;
     background-attachment: fixed;
     background-repeat: no-repeat;
-    transition: 0.05s linear;
-    transition-property: background-position;
-    animation: change-background 40s infinite both step-end;
+    transition: background-position 0.05s linear;
+    transition: background-image 3.5s ease-in-out;
     grid-template-areas: 'logo menu menu login addRecipe''main main main main main''category category category category category''item-search item-search item-search item-search item-search''recipes recipes recipes recipes recipes''footer footer footer footer footer';
-}
-
-@keyframes change-background {
-    25% {
-        background-image: url(../img/cover2.jpg);
-    }
-
-    50% {
-        background-image: url(../img/cover6.jpg);
-    }
-
-    75% {
-        background-image: url(../img/cover3.jpg);
-    }
 }
 
 .logo,
