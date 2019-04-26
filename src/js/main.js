@@ -22,6 +22,7 @@ async function renderAllRecipes() {
     const recipesAll = await getBase('/recipes');
     (async () => await _render_one_recipe(recipesAll, '.recipes-container'))();
     animateFocus('.recipes-click-scroll');
+    loadFavorites();
 };
 
 async function _render_one_recipe(recipes, location) {
@@ -44,12 +45,91 @@ async function _render_one_recipe(recipes, location) {
                 </div>`);
         $recipe.appendTo($recipeContainer);
         $(`.image_${rec.id}`).on('click', () => fullRecipes(rec.id));
+        $(`#fav_${rec.id}`).on('click', addToFavorites);
     }
 };
 
 function fullRecipes(id) {
     sessionStorage.setItem('idOfCardRecipe', id);
     window.open('recipe.html', '', '');
+};
+
+const fav = {favorites: []};
+async function addToFavorites() {
+    const iconId = event.currentTarget.id;
+    const recipeId = Number(iconId.slice(4, ));
+    if (localStorage.getItem('validation')) {
+        if ($(`#${iconId} i`).hasClass('offHeart')) {
+            $(`#${iconId}`).html(`<i title="Dodato u omiljene" class="fas fa-heart fa-lg onHeart"></i>`);
+            fav['favorites'].push(recipeId);
+            await api.patch(`/users/${localStorage.getItem('id')}`, fav);
+        } else {
+            $(`#${iconId}`).html(`<i title="Dodaj u omiljene" class="far fa-heart fa-lg offHeart"></i>`);
+            const index = fav.favorites.indexOf(recipeId);
+            fav['favorites'].splice(index, 1);
+            await api.patch(`/users/${localStorage.getItem('id')}`, fav);
+        }
+    }
+};
+
+async function favorites() {
+    if (localStorage.getItem('validation')) {
+        const user = await getBase(`/users/${localStorage.getItem('id')}`);
+        const favorites = user.favorites;
+        fav['favorites'] = favorites;
+    }
+};
+
+function loadFavorites() {
+    setTimeout(() => {
+        const recipesId = fav['favorites'];
+        if (localStorage.getItem('validation') && (recipesId !== undefined)) {
+            for (const rec of recipesId) {
+                $(`#fav_${rec}`).html(`<i title="Dodato u omiljene" class="fas fa-heart fa-lg onHeart"></i>`);
+            }
+        }}, 400);
+};
+
+async function renderFavorites() {
+    const user = await getBase(`/users/${localStorage.getItem('id')}`);
+    const recipesId = user.favorites;
+    if (recipesId.length > 0) {
+        let queryForRender = '';
+        for (const rec of recipesId) {
+            queryForRender += `id=${rec}&`;
+        }
+        $('.content').html(`<h1 class="recipes-click-scroll">Korisnik: ${localStorage.getItem('user')} - Omiljeni recepti:</h1>
+                            <div class="user-container"></div>`);
+        const recipesForRender = await getBase(`/recipes/?${queryForRender}`);
+        (async () => await _render_one_recipe(recipesForRender, '.user-container'))();
+        animateFocus('.content');
+        loadFavorites();
+    } else {
+        alert('Nemate dodate omiljene kulinarske recepte');
+    }
+};
+
+function addIngredient() {
+    let previous = ($('.form-right-1').children('input').last().attr('class')).slice(6, );
+    const count = Number(previous) + 1;
+    const $ingradient = $(`<input type="number" name="qty_${count}" class="input_${count}" placeholder="Upišite&nbsp;meru">
+                        <input type="text" name="ingredient_${count}" class="input_${count}" placeholder="Naziv&nbsp;sastojka_${count}"><br>`);
+    $ingradient.appendTo($('.form-right-1'));
+};
+
+function addStep() {
+    let previous = ($('.form-right-2').children('textarea').last().attr('class')).slice(9, );
+    const count = Number(previous) + 1;
+    const $step = $(`<textarea name="step_${count}" cols="50" rows="3" class="textarea_${count}" placeholder="Korak ${count}"></textarea><br>`);
+    $step.appendTo($('.form-right-2'));
+};
+
+function deleteFields(location, field) {
+    let toClean = $(location).children(field).last().attr('class');
+    if (toClean !== `${field}_2`) {
+        $(`.${toClean}`).remove();
+        $(location).children('br').last().remove();
+    }
 };
 
 function animateFocus(toLocation) {
@@ -170,18 +250,19 @@ function logInOut() {
 
 async function usersRecipes() {
     const userRecipes = await getBase(`/recipes?authorId=${localStorage.getItem('id')}`);
-    $('.content').append(`<h1 class="recipes-click-scroll">Korisnik: ${localStorage.getItem('user')} - oglasi:</h1>
+    $('.content').append(`<h1 class="recipes-click-scroll">Korisnik: ${localStorage.getItem('user')} - recepti:</h1>
                         <div class="user-container"></div>`);
     await _render_one_recipe(userRecipes, '.user-container');
     animateFocus('.content');
-    $('.recipes').append(`<button class="editRecipe" type="submit">Izmeni&nbsp;oglas</button>
-                    <button class="deleteRecipe" type="submit">Obriši&nbsp;oglas</button><br>`)
-    $('.deleteRecipe').on('click', () => deleteRecipes('Uspesno ste obrisali vaš oglas!'));
+    $('.recipes').append(`<button class="editRecipe" type="submit">Izmeni&nbsp;recept</button>
+                    <button class="deleteRecipe" type="submit">Obriši&nbsp;recept</button><br>`)
+    $('.deleteRecipe').on('click', () => deleteRecipes('Uspesno ste obrisali vaš kulinarski recept!'));
+    $('#showFavorites').on('click', () => renderFavorites());
 };
 
 async function deleteRecipes(message) {
     const recipe = event.currentTarget.parentElement.id;
-    if (confirm('Da li ste sigurni da želite da obrisete odabrani oglas ?')) {
+    if (confirm('Da li ste sigurni da želite da obrisete odabrani recept ?')) {
         return await api.delete(`/recipes/${recipe}`)
             .then((response) => { alert(`${message}`); location.reload(); })
             .catch((error) => { alert(error); });
@@ -206,6 +287,10 @@ function eventsAll() {
     $('#createUser').on('click', createUser);
     $('#logIn-out').on('click', logInOut);
     $('#home').on('click', () => animateFocus('#home'));
+    $('#plus-ingredient').on('click', addIngredient);
+    $('#minus-ingredient').on('click', () => deleteFields('.form-right-1', 'input'));
+    $('#plus-step').on('click', addStep);
+    $('#minus-step').on('click', () => deleteFields('.form-right-2', 'textarea'));
 };
 
-$(document).on('load', animateBackground(), onLoadPageHTML(), addLogOut(), eventsAll(), animationsAll());
+$(document).on('load', animateBackground(), onLoadPageHTML(), addLogOut(), eventsAll(), animationsAll(), favorites(), loadFavorites());

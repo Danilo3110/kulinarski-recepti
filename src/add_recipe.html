@@ -109,16 +109,28 @@
                         Izaberite slike: <input type="file" name="imgUrl" id="imgUrl" multiple required><br>
                         <hr>
                     </div>
-                    <div class="form-right">
-                        <h4>Grupe&nbsp;sastojaka</h4>
-                        <input type="number" name="qty_1" class="inputSmall" placeholder="Upišite&nbsp;meru"><br>
-                        <input type="text" name="ingredient_1" placeholder="Naziv&nbsp;sastojka"><br>
-                        <input type="number" name="qty_2" class="inputSmall" placeholder="Upišite&nbsp;meru"><br>
-                        <input type="text" name="ingredient_2" placeholder="Naziv&nbsp;sastojka"><br>
-                        <hr>
-                        <h4>Pripremni&nbsp;postupak</h4>
-                        <textarea name="step_1" cols="50" rows="5" placeholder="Korak 1" required></textarea><br>
-                        <textarea name="step_2" cols="50" rows="5" placeholder="Korak 2" required></textarea><br>
+                    <div class="form-right" id="addRecipe">
+                        <div class="form-right-1">
+                            <h4>Grupe&nbsp;sastojaka</h4>
+                            <input type="number" name="qty_1" class="input_1" placeholder="Upišite&nbsp;meru">
+                            <input type="text" name="ingredient_1" class="input_1"
+                                placeholder="Naziv&nbsp;sastojka_1"><br>
+                            <input type="number" name="qty_2" class="input_2" placeholder="Upišite&nbsp;meru">
+                            <input type="text" name="ingredient_2" class="input_2"
+                                placeholder="Naziv&nbsp;sastojka_2"><br>
+                        </div>
+                        <a id="minus-ingredient"><i class="fas fa-minus-circle fa-2x" title="Obriši sastojak"></i></a>
+                        <a id="plus-ingredient"><i class="fas fa-plus-circle fa-2x" title="Dodaj sastojak"></i></a><br>
+                        <hr><br>
+                        <div class="form-right-2">
+                            <h4>Pripremni&nbsp;postupak</h4>
+                            <textarea name="step_1" cols="50" rows="3" class="textarea_1"
+                                placeholder="Korak 1"></textarea><br>
+                            <textarea name="step_2" cols="50" rows="3" class="textarea_2"
+                                placeholder="Korak 2"></textarea><br>
+                        </div>
+                        <a id="minus-step"><i class="fas fa-minus-circle fa-2x" title="Obriši korak"></i></a>
+                        <a id="plus-step"><i class="fas fa-plus-circle fa-2x" title="Dodaj korak"></i></a><br>
                         <hr>
                     </div>
                 </div>
