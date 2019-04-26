@@ -299,7 +299,9 @@ select {
 #cook1,
 #cook2,
 #cook3,
-#cook4 {
+#cook4,
+#user1,
+#fav1 {
     font-family: Montserrat, Georgia, serif;
     box-sizing: border-box;
     width: 12vw;
@@ -314,7 +316,9 @@ select {
 #cook1:hover,
 #cook2:hover,
 #cook3:hover,
-#cook4:hover {
+#cook4:hover,
+#user1:hover,
+#fav1:hover {
     background-color: rgb(181, 68, 132);
     transition: 0.7s ease;
     color: #F9F9F9;

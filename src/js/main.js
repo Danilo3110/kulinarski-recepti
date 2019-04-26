@@ -326,6 +326,11 @@ function eventsAll() {
     $('#createUser').on('click', createUser);
     $('#logIn-out').on('click', logInOut);
     $('#searchRecipesAll, #searchRecipesAll_2').on('click', () => searchRecipes('.recipes-container', '.recipes-click-scroll'));
+    $('#rec_searchRecipesAll, #rec_searchRecipesAll_2').on('click', () => {
+        $('.content').html(`<h1 class="recipes-click-scroll"></h1>
+                            <div class="user-container"></div>`);
+        searchRecipes('.user-container', '.recipes-click-scroll');
+    });
     $('#home').on('click', () => animateFocus('#home'));
     $('#plus-ingredient').on('click', addIngredient);
     $('#minus-ingredient').on('click', () => deleteFields('.form-right-1', 'input'));
