@@ -632,11 +632,16 @@ select:valid+span:after {
 }
 
 .fa-heart:hover,
-.fa-print:hover {
+.fa-print:hover,
+.fa-share-alt:hover {
     color: rgb(181, 68, 132);
     transition: 0.25s ease-out;
     transform: scale(1.15, 1.15);
     cursor: pointer;
+}
+
+.fa-share-alt:hover {
+    color: blue;
 }
 
 .offHeart:active {
