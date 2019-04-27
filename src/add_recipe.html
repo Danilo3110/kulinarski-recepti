@@ -112,10 +112,10 @@
                     <div class="form-right" id="addRecipe">
                         <div class="form-right-1">
                             <h4>Grupe&nbsp;sastojaka</h4>
-                            <input type="number" name="qty_1" class="input_1" placeholder="Upišite&nbsp;meru">
+                            <input type="text" name="qty_1" class="input_1" placeholder="Upišite&nbsp;meru">
                             <input type="text" name="ingredient_1" class="input_1"
                                 placeholder="Naziv&nbsp;sastojka_1"><br>
-                            <input type="number" name="qty_2" class="input_2" placeholder="Upišite&nbsp;meru">
+                            <input type="text" name="qty_2" class="input_2" placeholder="Upišite&nbsp;meru">
                             <input type="text" name="ingredient_2" class="input_2"
                                 placeholder="Naziv&nbsp;sastojka_2"><br>
                         </div>
@@ -131,12 +131,15 @@
                         </div>
                         <a id="minus-step"><i class="fas fa-minus-circle fa-2x" title="Obriši korak"></i></a>
                         <a id="plus-step"><i class="fas fa-plus-circle fa-2x" title="Dodaj korak"></i></a><br>
+                        <hr><br>
+                        <h4>Savet</h4>
+                        <textarea name="advice" cols="50" rows="4" placeholder="Savet"></textarea><br>
                         <hr>
                     </div>
                 </div>
                 <hr>
                 <button type="reset">Resetuj&nbsp;sve</button> &nbsp;&nbsp;&nbsp;
-                <button type="button" id="createObjects">Pošalji&nbsp;recept</button>
+                <button type="button" id="createRecipe">Pošalji&nbsp;recept</button>
                 <hr>
             </form>
         </div>

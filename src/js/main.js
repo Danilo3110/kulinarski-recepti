@@ -13,7 +13,7 @@ async function getBase(location) {
 
 async function renderRecipes() {
     const recipes = await getBase('/recipes?_sort=id&_order=desc');
-    const limitRecipes = recipes.slice(0, 8);
+    const limitRecipes = recipes.slice(0, 9);
     (async () => await _render_one_recipe(limitRecipes, '.recipes-container'))();
 };
 
@@ -112,7 +112,7 @@ async function renderFavorites() {
 function addIngredient() {
     let previous = ($('.form-right-1').children('input').last().attr('class')).slice(6, );
     const count = Number(previous) + 1;
-    const $ingradient = $(`<input type="number" name="qty_${count}" class="input_${count}" placeholder="Upišite&nbsp;meru">
+    const $ingradient = $(`<input type="text" name="qty_${count}" class="input_${count}" placeholder="Upišite&nbsp;meru">
                         <input type="text" name="ingredient_${count}" class="input_${count}" placeholder="Naziv&nbsp;sastojka_${count}"><br>`);
     $ingradient.appendTo($('.form-right-1'));
 };
@@ -191,6 +191,46 @@ function createUser() {
     const message = 'Uspesno ste se registrovali';
     (async () => await postIntoDatabase('users', usersObj, message))();
     setTimeout(() => { location.href = 'index.html'; }, 500);
+};
+
+function createRecipe() {
+    const recipesObj = {};
+    const option = [];
+    const imgUrls = [];
+
+    const currentDate = new Date();
+    const recipeCreated = currentDate.toLocaleString('sr-RS');
+    const randomCheckingTime = Math.floor(Math.random() * Math.floor(24));
+    const recipeChecked = new Date(currentDate.setHours(currentDate.getHours() + randomCheckingTime)).toLocaleString('sr-RS');
+    recipesObj['recipeCreated'] = recipeCreated;
+    recipesObj['recipeChecked'] = recipeChecked;
+
+    const recipeNumber = Math.floor(Math.random() * 999);
+    recipesObj['recipeNumber'] = recipeNumber;
+    recipesObj['authorId'] = JSON.parse(localStorage.getItem('id'));
+
+    $('#writeRecipe').find('input:not(:checkbox), textarea, select').each(function () {
+        recipesObj[this.name] = $(this).val();
+    });
+    $('#writeRecipe').find('input[type="number"]').each(function () {
+        recipesObj[this.name] = Number($(this).val());
+    });
+    $('#writeRecipe').find(':checkbox').each(function () {
+        if ($(this).is(':checked')) {
+            recipesObj[this.id] = true;
+            option.push(this.value);
+            recipesObj['options'] = option.join(', ');
+        } else {
+            recipesObj[this.id] = false;
+        }
+    });
+    const files = $("#imgUrl")[0].files;
+    for (const i of files) {
+        imgUrls.push('img/' + i.name);
+        recipesObj.imgUrl = imgUrls;
+    }
+    const message = 'Uspešno ste objavili novi kulinarski recept';
+    (async () => {await postIntoDatabase('recipes', recipesObj, message); await (location.href = 'user_panel.html');})();
 };
 
 async function userLogIn() {
@@ -289,10 +329,10 @@ async function searchRecipes(location, animation) {
     loadFavorites();
 };
 
-async function categoryButtons(){
+async function categoryButtons() {
     let index = 1;
     const categorys = ['Hladna predjela', 'Salate', 'Glavna jela', 'Torte'];
-    for(const cat of categorys){
+    for (const cat of categorys) {
         let recipes = await getBase(`/recipes?category=${cat}`);
         $(`#cook${index}`).children('h6').html(`Novi&nbsp;recepti: ${recipes.length == undefined ? 0 : recipes.length}`);
         $(`#cook${index}`).on('click', () => categoryShow(`/recipes?category=${cat}`, cat));
@@ -300,7 +340,7 @@ async function categoryButtons(){
     }
 };
 
-async function categoryShow(querry, category){
+async function categoryShow(querry, category) {
     const recipes = await getBase(`${querry}&_sort=id&_order=desc`);
     $('.content').html(`<h1 class="recipes-click-scroll">${category.toUpperCase()}:</h1><div class="recipes-container"></div>`);
     (async () => await _render_one_recipe(recipes, '.recipes-container'))();
@@ -325,6 +365,7 @@ function eventsAll() {
     $('#logIn').on('click', userLogIn);
     $('#createUser').on('click', createUser);
     $('#logIn-out').on('click', logInOut);
+    $('#createRecipe').on('click', () => createRecipe());
     $('#searchRecipesAll, #searchRecipesAll_2').on('click', () => searchRecipes('.recipes-container', '.recipes-click-scroll'));
     $('#rec_searchRecipesAll, #rec_searchRecipesAll_2').on('click', () => {
         $('.content').html(`<h1 class="recipes-click-scroll"></h1>
