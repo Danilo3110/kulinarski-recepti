@@ -30,7 +30,8 @@ async function _render_one_recipe(recipes, location) {
         const $recipeContainer = $(`${location}`);
         const $recipe = $(`<div class="recipes" id="${rec.id}">
                     <div class="recipes-descr fav">
-                        <h3>Datum objave: ${(rec.recipeCreated).slice(0, 10)}<i title="Podeli sa drugima" class="fas fa-share-alt fa-lg"></i>
+                        <h3>Datum objave: ${(rec.recipeCreated).slice(0, 10)}
+                        <span id="share_${rec.id}"><i title="Podeli sa drugima" class="fas fa-share-alt fa-lg"></i></span>
                         <span id="fav_${rec.id}"><i title="Dodaj u omiljene" class="far fa-heart fa-lg offHeart"></i></span>
                         </h3>
                     </div>

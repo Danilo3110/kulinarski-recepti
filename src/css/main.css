@@ -32,7 +32,7 @@ body {
 }
 
 .logo img {
-    padding-left: 10vw;
+    padding-left: 5vw;
     width: 5vw;
 }
 
@@ -45,8 +45,8 @@ body {
 .menu ul li {
     list-style-type: none;
     display: inline;
-    padding-left: 5%;
-    padding-right: 5%;
+    padding-left: 4%;
+    padding-right: 4%;
     text-align: center;
 }
 
@@ -78,6 +78,7 @@ body {
 .login {
     grid-area: login;
     color: white;
+    padding-left: 5vw;
 }
 
 .login i {
