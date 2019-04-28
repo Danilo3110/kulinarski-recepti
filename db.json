@@ -23,11 +23,13 @@
       "advice": "",
       "posno": false,
       "vegetarijanski": false,
+      "ingredients": 2,
+      "steps": 2,
       "id": 1
     },
     {
-      "recipeCreated": "27.4.2019. 19:41:32",
-      "recipeChecked": "28.4.2019. 00:41:32",
+      "recipeCreated": "28.4.2019. 01:41:27",
+      "recipeChecked": "29.4.2019. 00:41:27",
       "recipeNumber": 812,
       "authorId": 1,
       "category": "Hladna predjela",
@@ -64,6 +66,8 @@
       "advice": "",
       "posno": false,
       "vegetarijanski": false,
+      "ingredients": 9,
+      "steps": 3,
       "id": 2
     },
     {
@@ -107,6 +111,8 @@
       "posno": false,
       "vegetarijanski": true,
       "options": "Vegetarijanski",
+      "ingredients": 9,
+      "steps": 4,
       "id": 3
     },
     {
@@ -141,6 +147,8 @@
       "advice": "Ukoliko vam je meso malo masnije,  čvrsto ga zatvorite u foliju, da bi sačuvali sok.",
       "posno": false,
       "vegetarijanski": false,
+      "ingredients": 6,
+      "steps": 2,
       "id": 4
     },
     {
@@ -186,6 +194,8 @@
       "advice": "",
       "posno": false,
       "vegetarijanski": false,
+      "ingredients": 10,
+      "steps": 5,
       "id": 5
     },
     {
@@ -222,6 +232,8 @@
       "advice": "",
       "posno": false,
       "vegetarijanski": false,
+      "ingredients": 7,
+      "steps": 2,
       "id": 6
     },
     {
@@ -263,6 +275,8 @@
       "advice": "",
       "posno": false,
       "vegetarijanski": false,
+      "ingredients": 9,
+      "steps": 3,
       "id": 7
     },
     {
@@ -298,6 +312,8 @@
       "advice": "",
       "posno": false,
       "vegetarijanski": false,
+      "ingredients": 6,
+      "steps": 3,
       "id": 8
     },
     {
@@ -330,6 +346,8 @@
       "advice": "Kolač ćete najlakše iseći koncem. Možda ovo niste znali ali pokušajte, jer je zaista efikasno. Prvo oštrim nožem obeležite presek i oko njega stavite jak konac. Krajeve konca prebacite unakrst i lagano zatežete. Tako ćete kolač preseći uvek ravnomerno na pola ili već na više delova.\nZa glazuru, mislim da već znate ; Ukoliko želite da glazura na kolačićima ima i poseban sjaj, dodajte na 100 g čokolade jednu kašičicu masnoće od kokosovog oraha ili pored maslaca dodajte i kašiku ulja.\n\nA pre nego prelijete glazuru na kolač, slobodno prvo premažite kolač tankim slojem marmelade da ne bi testo upilo glazuru.",
       "posno": false,
       "vegetarijanski": false,
+      "ingredients": 5,
+      "steps": 2,
       "id": 9
     },
     {
@@ -363,6 +381,8 @@
       "advice": "Imajte u vidu da je ovo M-I-N-I plazma torta, što možete videti i po k-o-l-i-č-i-n-i sastojaka. Ovo je čisto malo brzinsko iznenađenje za već nekog vama dragog.",
       "posno": false,
       "vegetarijanski": false,
+      "ingredients": 5,
+      "steps": 3,
       "id": 10
     },
     {
@@ -399,6 +419,8 @@
       "posno": false,
       "vegetarijanski": true,
       "options": "Vegetarijanski",
+      "ingredients": 6,
+      "steps": 3,
       "id": 11
     },
     {
@@ -441,6 +463,8 @@
       "advice": "Nikad nisam bila ljubitelj cvekle, ali u ovom receptu cvekla se jedva oseća i oduševiće svojim ukusom čak i one koji ne vole ovo povrće.",
       "posno": false,
       "vegetarijanski": false,
+      "ingredients": 9,
+      "steps": 4,
       "id": 12
     }
   ],

@@ -194,7 +194,7 @@ function createUser() {
     setTimeout(() => { location.href = 'index.html'; }, 500);
 };
 
-function createRecipe() {
+function createRecipe(methodPost = true) {
     const recipesObj = {};
     const option = [];
     const imgUrls = [];
@@ -206,8 +206,10 @@ function createRecipe() {
     recipesObj['recipeCreated'] = recipeCreated;
     recipesObj['recipeChecked'] = recipeChecked;
 
-    const recipeNumber = Math.floor(Math.random() * 999);
-    recipesObj['recipeNumber'] = recipeNumber;
+    if (methodPost) {
+        const recipeNumber = Math.floor(Math.random() * 999);
+        recipesObj['recipeNumber'] = recipeNumber;
+    }
     recipesObj['authorId'] = JSON.parse(localStorage.getItem('id'));
 
     $('#writeRecipe').find('input:not(:checkbox), textarea, select').each(function () {
@@ -225,13 +227,18 @@ function createRecipe() {
             recipesObj[this.id] = false;
         }
     });
-    const files = $("#imgUrl")[0].files;
-    for (const i of files) {
-        imgUrls.push('img/' + i.name);
-        recipesObj.imgUrl = imgUrls;
-    }
-    const message = 'Uspešno ste objavili novi kulinarski recept';
-    (async () => {await postIntoDatabase('recipes', recipesObj, message); await (location.href = 'user_panel.html');})();
+    recipesObj['ingredients'] = Number(($('.form-right-1').children('input').last().attr('class')).slice(6, ));
+    recipesObj['steps'] = Number(($('.form-right-2').children('textarea').last().attr('class')).slice(9, ));
+
+    if (methodPost) {
+        const files = $("#imgUrl")[0].files;
+        for (const i of files) {
+            imgUrls.push('img/' + i.name);
+            recipesObj.imgUrl = imgUrls;
+        }
+        const message = 'Uspešno ste objavili novi kulinarski recept';
+        (async () => {await postIntoDatabase('recipes', recipesObj, message); await (location.href = 'user_panel.html');})();
+    } else return recipesObj;
 };
 
 async function userLogIn() {
@@ -296,9 +303,64 @@ async function usersRecipes() {
     await _render_one_recipe(userRecipes, '.user-container');
     animateFocus('.content');
     $('.recipes').append(`<button class="editRecipe" type="submit">Izmeni&nbsp;recept</button>
-                    <button class="deleteRecipe" type="submit">Obriši&nbsp;recept</button><br>`)
+                    <button class="deleteRecipe" type="submit">Obriši&nbsp;recept</button><br>`);
+    $('.editRecipe').on('click', startEditRecipe);
     $('.deleteRecipe').on('click', () => deleteRecipes('Uspesno ste obrisali vaš kulinarski recept!'));
     $('#showFavorites').on('click', () => renderFavorites());
+};
+
+async function startEditRecipe() {
+    const recipe = event.currentTarget.parentElement.id;
+    const editRecipe = await getBase(`/recipes/${recipe}`);
+    delete editRecipe.options;
+    sessionStorage.setItem('recipeForEdit', JSON.stringify(editRecipe));
+    sessionStorage.setItem('recipeCheckLoadValidity', true);
+    sessionStorage.setItem('recipeId', recipe);
+    location.href = 'add_recipe.html';
+};
+
+function getRecipeForEditFromSStorage() {
+    $('#imgUrl').remove();
+    const recipe = JSON.parse(sessionStorage.getItem('recipeForEdit'));
+    for (let i = 3; i<= recipe.ingredients; i++){
+        addIngredient();
+    }
+    for (let i = 3; i<= recipe.steps; i++){
+        addStep();
+    }
+    $('#writeRecipe').find(':checkbox').each(function () {
+        if (recipe[this.id] === true) {
+            this.checked = true;
+        }
+    });
+    function populate(form, data) {
+        $.each(data, function (key, value) {
+            $(`[name = ${key}]`, form).val(value);
+        });
+    };
+    populate('#writeRecipe', recipe);
+    sessionStorage.removeItem('recipeCheckLoadValidity');
+    sessionStorage.removeItem('recipeForEdit');
+    $('.content h2').html('Izmena recepta');
+    $('#createRecipe').remove();
+    $('button[type=reset]').after(`&nbsp;&nbsp;&nbsp;<button type="button" id="modifyRecipe">Sačuvaj&nbsp;izmene</button>`);
+    $('#modifyRecipe').on('click', patch_Recipe);
+};
+
+function loadRecipeToForm() {
+    if (JSON.parse(sessionStorage.getItem('recipeCheckLoadValidity'))) {
+        $('html head').find('title').text(`Izmena recepta`);
+        getRecipeForEditFromSStorage();
+    };
+};
+
+async function patch_Recipe() {
+    const editedRecipe = createRecipe(false);
+    await api.patch(`/recipes/${sessionStorage.getItem('recipeId')}`, editedRecipe)
+        .then((response) => alert(`Uspešno ste izmenili vaš recept!`))
+        .catch((error) => alert(error));
+    sessionStorage.removeItem('recipeId');
+    location.href = 'user_panel.html';
 };
 
 async function deleteRecipes(message) {
@@ -353,6 +415,8 @@ function onLoadPageHTML() {
     const page = location.href;
     if (page.search('/index.html') >= 0) {
         return renderRecipes();
+    } else if (page.search('/add_recipe.html') >= 0) {
+        return loadRecipeToForm();
     } else if (page.search('/user_panel.html') >= 0) {
         return usersRecipes();
     }
