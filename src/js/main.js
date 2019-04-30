@@ -17,9 +17,9 @@ async function renderRecipes() {
     (async () => await _render_one_recipe(limitRecipes, '.recipes-container'))();
 };
 
-async function renderAllRecipes() {
-    $('.content').html(`<h1 class="recipes-click-scroll">Vrhunski recepti - baza recepata:</h1><div class="recipes-container"></div>`);
-    const recipesAll = await getBase('/recipes');
+async function renderAllRecipes(title, query) {
+    $('.content').html(`<h1 class="recipes-click-scroll">${title}</h1><div class="recipes-container"></div>`);
+    const recipesAll = await getBase(`/recipes${query}`);
     (async () => await _render_one_recipe(recipesAll, '.recipes-container'))();
     animateFocus('.recipes-click-scroll');
     loadFavorites();
@@ -38,10 +38,11 @@ async function _render_one_recipe(recipes, location) {
                     <img src="${rec.imgUrl[0] == undefined ? './img/image-not-found.jpg' : rec.imgUrl[0]}" alt="recept" class="image_${rec.id}" title="${rec.title}"><br>
                     <div class="recipe-info">
                         <h3 class="recipes-ctgr">${rec.category}</h3>
-                        <h2 class="recipes-descr" id="recipes-height">${rec.title}</h2><br>
+                        <h2 class="recipes-descr" id="recipes-height">${rec.title}</h2>
                         <hr>
-                        <h3 class="recipes-descr"><i class="fas fa-stopwatch fa-lg"></i>&nbsp;${rec.timePrep}&nbsp;min&nbsp;&nbsp;&nbsp;
-                        <i class="fas fa-utensils fa-lg"></i>&nbsp;${rec.preparation}</h3>
+                        <h3 class="recipes-descr"><i class="fas fa-stopwatch fa-lg"></i>&nbsp;${rec.timePrep}&nbsp;min&nbsp;&nbsp;
+                        <i class="fas fa-tachometer-alt fa-lg"></i>&nbsp;${rec.preparation}
+                        <span id="person"><i class="fas fa-utensils fa-lg"></i>&nbsp;${(rec.personNumber).replace(' ', '&nbsp;')}</span></h3>
                     </div>
                 </div>`);
         $recipe.appendTo($recipeContainer);
@@ -173,6 +174,84 @@ function animationsAll() {
     });
 };
 
+async function renderFullRecipe() {
+    const idOfCardRecipe = JSON.parse(sessionStorage.getItem('idOfCardRecipe'));
+    const responseRecipes = await api.get(`/recipes/${idOfCardRecipe}`);
+    if (responseRecipes.status < 400) {
+        const recipes = responseRecipes.data;
+        const users = await getBase(`/users/${recipes.authorId}`);
+
+        $('html head').find('title').text(`${recipes.title}`);
+        const $fullContainer = $('.content');
+        const $recipe = $(`<h2>${recipes.title}</h2>
+            <h4 class="catgr-title">Kategorija: ${recipes.category}</h4>
+            <div class="single-recipe-container">
+            <div class="single-recipe-img"></div>
+            <div class="single-recipe-data">
+                <div>
+                    <h5>Kuhinja: ${recipes.kitchen}</h5>
+                    Težina pripreme: ${recipes.preparation}<br><br>
+                    Broj osoba: <i class="fas fa-male fa-lg">&nbsp;${recipes.personNumber}</i><br><br>
+                    Vreme pripreme: <div class="numStep">${recipes.timePrep}</div>minuta<br><br>
+                    Posno:&nbsp;${recipes.posno === true ? 'DA': 'NE'}<br><br>
+                    ${recipes.vegetarijanski === true ? '<img src="./img/vegeterian.png" class="vegeterian">': ''}<br>
+                </div>
+            </div>
+            <div class="single-recipe-userData">
+                <h5>Šifra recepta: ${recipes.recipeNumber}</h5>
+                Objavljen: ${recipes.recipeCreated}<br><br>
+                Proveren: ${recipes.recipeChecked}<hr>
+                <h4>Autor: ${users.name}</h4>
+                Mesto: ${users.city}<br><br>
+                Zanimanje: ${users.work === '' ? '/' : users.work}<br><br>
+                <button type="submit" id="showUserRecipes">Recepti&nbsp;autora</button><br><br>
+                <i class="fas fa-print fa-lg" title="Odštampaj recept"></i>
+                <span id="fav_${recipes.id}"><i class="far fa-heart fa-lg offHeart" title="Dodaj u omiljene"></i></span>
+                <span id="share_${recipes.id}"><i title="Podeli sa drugima" class="fas fa-share-alt fa-lg"></i></span>
+            </div>
+            <hr>
+            <div class="single-recipe-detailed">
+                <h3>Opis</h3>
+                <div>${recipes.recipeInfo}</div><br>
+            </div>
+            <hr>
+            <div class="single-recipe-ingredients">
+                <h3>Potrebni&nbsp;sastojci</h3>
+                <table class="ingredients"></table><br>
+            </div><hr>
+            <div class="single-recipe-steps">
+                <h3>Priprema&nbsp;jela</h3>
+                <ol class="steps"></ol>
+            </div><hr>
+            <div class="single-recipe-advice">
+                <h3>Saveti</h3>
+                <ol class="advice"><li><i class="far fa-lightbulb fa-2x"></i>&nbsp;${recipes.advice === '' ? 'Prijatno!' : recipes.advice}</li></ol>
+            </div><hr>
+            </div>`);
+        $recipe.appendTo($fullContainer);
+        if ((recipes.imgUrl).length != 0) {
+            recipes.imgUrl.forEach(function (image, index) {
+                $('.single-recipe-img').append(`<img src="${image}" alt="slika${index}">`);
+            });
+        } else {
+            $('.single-recipe-img').append(`<img src="./img/image-not-found.jpg" alt="nema slike">`);
+        }
+        for (let i = 1; i <= recipes.ingredients; i++) {
+            const qty = 'qty_' + i;
+            const ingredient = 'ingredient_' + i;
+            $('.ingredients').append(`<tr><td><strong>${recipes[qty]}</strong></td><td>-&nbsp;${recipes[ingredient]}</td></tr>`);
+        }
+        for (let i = 1; i <= recipes.steps; i++) {
+            const step = 'step_' + i;
+            $('.steps').append(`<li><div class="numStep">${i}.</div>${recipes[step]}</li>`);
+        }
+        animateFocus('.category');
+        $('.fa-print').on('click', printRecipe);
+        $(`#fav_${recipes.id}`).on('click', addToFavorites);
+        $(`#showUserRecipes`).on('click', async () => await renderAllRecipes(`Svi recepti korisnika - ${users.name}:`, `?authorId=${users.id}`));
+    }
+};
+
 async function postIntoDatabase(location, obj, message) {
     return await api.post(`/${location}`, obj)
         .then((response) => alert(`${message}`))
@@ -199,14 +278,14 @@ function createRecipe(methodPost = true) {
     const option = [];
     const imgUrls = [];
 
-    const currentDate = new Date();
-    const recipeCreated = currentDate.toLocaleString('sr-RS');
-    const randomCheckingTime = Math.floor(Math.random() * Math.floor(24));
-    const recipeChecked = new Date(currentDate.setHours(currentDate.getHours() + randomCheckingTime)).toLocaleString('sr-RS');
-    recipesObj['recipeCreated'] = recipeCreated;
-    recipesObj['recipeChecked'] = recipeChecked;
-
     if (methodPost) {
+        const currentDate = new Date();
+        const recipeCreated = currentDate.toLocaleString('sr-RS');
+        const randomCheckingTime = Math.floor(Math.random() * Math.floor(24));
+        const recipeChecked = new Date(currentDate.setHours(currentDate.getHours() + randomCheckingTime)).toLocaleString('sr-RS');
+        recipesObj['recipeCreated'] = recipeCreated;
+        recipesObj['recipeChecked'] = recipeChecked;
+
         const recipeNumber = Math.floor(Math.random() * 999);
         recipesObj['recipeNumber'] = recipeNumber;
     }
@@ -321,11 +400,12 @@ async function startEditRecipe() {
 
 function getRecipeForEditFromSStorage() {
     $('#imgUrl').remove();
+    $('h5').remove();
     const recipe = JSON.parse(sessionStorage.getItem('recipeForEdit'));
-    for (let i = 3; i<= recipe.ingredients; i++){
+    for (let i = 3; i <= recipe.ingredients; i++) {
         addIngredient();
     }
-    for (let i = 3; i<= recipe.steps; i++){
+    for (let i = 3; i <= recipe.steps; i++) {
         addStep();
     }
     $('#writeRecipe').find(':checkbox').each(function () {
@@ -394,27 +474,29 @@ async function searchRecipes(location, animation) {
 
 async function categoryButtons() {
     let index = 1;
-    const categorys = ['Hladna predjela', 'Salate', 'Glavna jela', 'Torte'];
-    for (const cat of categorys) {
+    const categories = ['Hladna predjela', 'Salate', 'Glavna jela', 'Torte'];
+    for (const cat of categories) {
         let recipes = await getBase(`/recipes?category=${cat}`);
         $(`#cook${index}`).children('h6').html(`Novi&nbsp;recepti: ${recipes.length == undefined ? 0 : recipes.length}`);
-        $(`#cook${index}`).on('click', () => categoryShow(`/recipes?category=${cat}`, cat));
+        $(`#cook${index}`).on('click', async () => await renderAllRecipes(`${cat.toUpperCase()}:`, `?category=${cat}&_sort=id&_order=desc`));
         index++;
     }
 };
 
-async function categoryShow(querry, category) {
-    const recipes = await getBase(`${querry}&_sort=id&_order=desc`);
-    $('.content').html(`<h1 class="recipes-click-scroll">${category.toUpperCase()}:</h1><div class="recipes-container"></div>`);
-    (async () => await _render_one_recipe(recipes, '.recipes-container'))();
-    animateFocus('#cook4');
-    loadFavorites();
+function printRecipe() {
+    const restorepage = $('body').html();
+    const printcontent = $('#content').clone();
+    $('body').empty().html(printcontent);
+    print();
+    $('body').html(restorepage);
 };
 
 function onLoadPageHTML() {
     const page = location.href;
     if (page.search('/index.html') >= 0) {
         return renderRecipes();
+    } else if (page.search('/recipe.html') >= 0) {
+        return renderFullRecipe();
     } else if (page.search('/add_recipe.html') >= 0) {
         return loadRecipeToForm();
     } else if (page.search('/user_panel.html') >= 0) {
@@ -423,7 +505,7 @@ function onLoadPageHTML() {
 };
 
 function eventsAll() {
-    $('#recipes_showAll').on('click', renderAllRecipes);
+    $('#recipes_showAll').on('click', async () => await renderAllRecipes('Vrhunski recepti - baza recepata:', ''));
     $('#aSearch, #closeSearch').on('click', advancedSearch);
     $('.item4 button').on('click', checkUserLogIn);
     $('#userPanel').on('click', goToUserPanel);
@@ -431,7 +513,7 @@ function eventsAll() {
     $('#createUser').on('click', createUser);
     $('#logIn-out').on('click', logInOut);
     $('#createRecipe').on('click', () => createRecipe());
-    $('#searchRecipesAll, #searchRecipesAll_2').on('click', () => searchRecipes('.recipes-container', '.recipes-click-scroll'));
+    $('#searchRecipesAll, #searchRecipesAll_2').on('click', async () => await searchRecipes('.recipes-container', '.recipes-click-scroll'));
     $('#rec_searchRecipesAll, #rec_searchRecipesAll_2').on('click', () => {
         $('.content').html(`<h1 class="recipes-click-scroll"></h1>
                             <div class="user-container"></div>`);
