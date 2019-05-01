@@ -23,7 +23,6 @@
 - Sortirani najnovije dodati recepti
 - Prikaz pojedinacnog recepta sa vise informacija i njegovo dinamicko iscrtavanje (JavaScript) na stranici, sa podacima iz JSON baze
 - Mogućnost dodavanja recepata u omiljene recepte, kao i štampanje recepta
-- Mogucnost download recepta u PDF formatu
 - Registracija korisnika
 - Log-in korisnika
 - Korisnik ima mogucnost da doda novi recept kroz formu za unos podataka i dodavanje slika
