@@ -13,7 +13,7 @@ async function getBase(location) {
 
 async function renderRecipes() {
     const recipes = await getBase('/recipes?_sort=id&_order=desc');
-    const limitRecipes = recipes.slice(0, 9);
+    const limitRecipes = recipes.slice(0, 11);
     (async () => await _render_one_recipe(limitRecipes, '.recipes-container'))();
 };
 
@@ -42,7 +42,7 @@ async function _render_one_recipe(recipes, location) {
                         <hr>
                         <h3 class="recipes-descr"><i class="fas fa-stopwatch fa-lg"></i>&nbsp;${rec.timePrep}&nbsp;min&nbsp;&nbsp;
                         <i class="fas fa-tachometer-alt fa-lg"></i>&nbsp;${rec.preparation}
-                        <span id="person"><i class="fas fa-utensils fa-lg"></i>&nbsp;${(rec.personNumber).replace(' ', '&nbsp;')}</span></h3>
+                        <span id="person"><i class="fas fa-utensils fa-lg"></i>&nbsp;${rec.personNumber === null ? '' : rec.personNumber}</span></h3>
                     </div>
                 </div>`);
         $recipe.appendTo($recipeContainer);
@@ -191,7 +191,7 @@ async function renderFullRecipe() {
                 <div>
                     <h5>Kuhinja: ${recipes.kitchen}</h5>
                     Težina pripreme: ${recipes.preparation}<br><br>
-                    Broj osoba: <i class="fas fa-male fa-lg">&nbsp;${recipes.personNumber}</i><br><br>
+                    Broj osoba: <i class="fas fa-male fa-lg">&nbsp;${recipes.personNumber === null ? '' : recipes.personNumber}</i><br><br>
                     Vreme pripreme: <div class="numStep">${recipes.timePrep}</div>minuta<br><br>
                     Posno:&nbsp;${recipes.posno === true ? 'DA': 'NE'}<br><br>
                     ${recipes.vegetarijanski === true ? '<img src="./img/vegeterian.png" class="vegeterian">': ''}<br>
@@ -239,7 +239,7 @@ async function renderFullRecipe() {
         for (let i = 1; i <= recipes.ingredients; i++) {
             const qty = 'qty_' + i;
             const ingredient = 'ingredient_' + i;
-            $('.ingredients').append(`<tr><td><strong>${recipes[qty]}</strong></td><td>-&nbsp;${recipes[ingredient]}</td></tr>`);
+            $('.ingredients').append(`<tr><td><strong>${recipes[qty] === '' ? 'po želji' : recipes[qty]}</strong></td><td>-&nbsp;${recipes[ingredient]}</td></tr>`);
         }
         for (let i = 1; i <= recipes.steps; i++) {
             const step = 'step_' + i;
@@ -266,8 +266,8 @@ function validationCheck() {
     const RegEx = {
         name: /^[A-ZŠĐŽČĆ][a-zšđžčć]{2,}\s[A-ZŠĐŽČĆ][a-zšđžčć]+$/,
         email: /^[a-z][a-z.-\d]+[@][a-z]{3,}.[a-z]{2,3}$/,
-        password: /^(?=.*\w).{8,}$/,
-        work: /^[A-ZŠĐŽČĆ][a-zšđžčć]{2,}\s|([A-ZŠĐŽČĆ]|[a-zšđžčć]+)/,
+        password: /^(?=[A-Za-z_]+\d)\w{8,}$/,
+        work: /^[A-ZŠĐŽČĆ][a-zšđžčć]{3,}\s?[A-ZŠĐŽČĆa-zšđžčć]+/,
         telephone: /^\d{3}\/(\d{2,3}-?\d{2,3}-?\d{2,}|\d{3,4}-?\d{3,4})$/
     };
     const passwordRepeat = $('#password').val() === $('#passwordRepeat').val();

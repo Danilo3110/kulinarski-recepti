@@ -32,14 +32,18 @@ body {
 }
 
 .logo img {
-    margin-left: 5vw;
-    width: 5vw;
+    margin-left: 6vw;
+    width: 5.5vw;
 }
 
 .menu {
     grid-area: menu;
     color: white;
     text-transform: uppercase;
+}
+
+.menu ul {
+    margin-block-start: 1.2vw;
 }
 
 .menu ul li {
@@ -77,11 +81,12 @@ body {
 .login {
     grid-area: login;
     color: white;
-    padding-left: 5vw;
+    text-align: left;
+    padding-left: 8vw;
 }
 
 .login i {
-    margin: 2.5vh 1vw 0 1vw;
+    margin: 1.2vw 1vw 1.2vw 1vw;
 }
 
 .login a,
@@ -102,17 +107,19 @@ body {
 
 .item4 button {
     width: 80%;
-    padding: 10px 8px;
+    padding: 0.65vw 0.52vw;
     margin: 2.5% 0;
 }
 
 button {
     font-family: Montserrat, Georgia, serif;
     font-size: 1vw;
+    padding: 0.8vw 1.3vw;
+    margin: 0.52vw 0;
     text-transform: uppercase;
     display: inline-block;
     border: 1px solid rgb(181, 68, 132);
-    border-radius: 4px;
+    border-radius: 0.26vw;
     box-sizing: border-box;
     background-color: rgb(181, 68, 132);
     color: white;
@@ -131,11 +138,11 @@ textarea,
 select {
     font-family: Montserrat, Georgia, serif;
     font-size: 1vw;
-    padding: 12px 20px;
-    margin: 8px 0;
+    padding: 0.8vw 1.3vw;
+    margin: 0.52vw 0;
     display: inline-block;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 0.26vw;
     box-sizing: border-box;
     z-index: 1;
 }
@@ -164,7 +171,7 @@ select {
     height: 1.25em;
     border: 1px solid #ccc;
     background: white;
-    border-radius: 4px;
+    border-radius: 0.26vw;
     box-shadow: inset 0 1px 3px rgba(0, 0, 0, .1);
 }
 
@@ -194,17 +201,6 @@ select {
     border: 1.5px solid rgb(151, 11, 91) !important;
 }
 
-select {
-    font-family: Montserrat, Georgia, serif;
-    font-size: 1vw;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border-radius: 4px;
-    box-sizing: border-box;
-    z-index: 1;
-}
-
 .main {
     grid-area: main;
     text-align: center;
@@ -222,8 +218,6 @@ select {
 
 .main button {
     width: 10vw;
-    padding: 12px 20px;
-    margin: 8px 0;
     text-transform: none;
 }
 
@@ -237,6 +231,11 @@ select {
 #closeSearch:hover {
     transition: 0.5s ease;
     color: rgb(151, 11, 91);
+}
+
+#advancedSearch ul {
+    margin-block-start: 0;
+    margin-block-end: 0;
 }
 
 .main img {
@@ -271,7 +270,7 @@ select {
 #category-wrap-small {
     box-shadow: 0 -12px 10px 0 rgba(42, 47, 54, .3);
     background-color: #F9F9F9;
-    border-radius: 4px;
+    border-radius: 0.26vw;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -302,12 +301,12 @@ select {
     font-family: Montserrat, Georgia, serif;
     box-sizing: border-box;
     width: 12vw;
-    height: 21vh;
+    height: 81%;
     background-color: #F9F9F9;
     text-align: center;
     padding: 20%;
-    border-radius: 4px;
-    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.10);
+    border-radius: 0.26vw;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.10);
 }
 
 #cook1:hover,
@@ -329,7 +328,7 @@ select {
 
 .content h1 {
     color: black;
-    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.10);
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.10);
     padding: 1% 0;
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-weight: 400;
@@ -360,8 +359,8 @@ select {
     font-size: 0.7vw;
     width: 30%;
     margin: 1% 0;
-    border-radius: 12px;
-    box-shadow: 0px 0px 6px rgba(0, 0, 0, .24);
+    border-radius: 0.8vw;
+    box-shadow: 0 0 6px rgba(0, 0, 0, .24);
     background-color: white;
 }
 
@@ -369,19 +368,19 @@ select {
 .steps li:hover {
     transform: scale(1.008, 1.008);
     transition: 0.25s ease;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0.52vw 1.05vw 0 rgba(0, 0, 0, 0.5);
     cursor: pointer;
 }
 
 .recipe-info {
     margin: 0.7vw;
     border: 2px dotted rgba(0, 0, 0, .12);
-    border-radius: 5px 20px 5px;
+    border-radius: 0.33vw 1.3vw 0.33vw;
 }
 
 .recipes-descr {
     text-align: left;
-    margin-left: 2%;
+    margin-left: 2.5%;
 }
 
 .fav i {
@@ -425,7 +424,7 @@ hr {
     margin: 2% 10%;
     padding: 1% 4%;
     text-align: left;
-    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.10);
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.10);
     background-color: white;
 }
 
@@ -450,7 +449,7 @@ hr {
     position: absolute;
     padding-top: 1%;
     width: 36%;
-    border-radius: 5px 20px 5px;
+    border-radius: 0.33vw 1.3vw 0.33vw;
     transition: all .3s ease-in-out;
 }
 
@@ -466,12 +465,11 @@ hr {
 .single-recipe-data,
 .single-recipe-userData {
     width: 20%;
-    padding: 0px 5%;
+    padding: 0 5%;
 }
 
 .single-recipe-userData button {
     width: 100%;
-    padding: 12px 20px;
     margin: 2.5% 0;
 }
 
@@ -488,7 +486,7 @@ hr {
 .single-recipe-advice,
 .single-recipe-detailed {
     width: 100%;
-    padding: 0px 5%;
+    padding: 0 5%;
 }
 
 table {
@@ -504,8 +502,8 @@ table {
 .ingredients {
     margin: auto 10%;
     padding: 1%;
-    border-radius: 5px 20px 5px;
-    box-shadow: 0px 0px 6px rgba(0, 0, 0, .24);
+    border-radius: 0.33vw 1.3vw 0.33vw;
+    box-shadow: 0 0 6px rgba(0, 0, 0, .24);
 }
 
 .steps,
@@ -533,8 +531,8 @@ table {
     background: #FFF;
     margin: 4.5% auto;
     padding: 4% 4%;
-    border-radius: 5px 20px 5px;
-    box-shadow: 0px 0px 6px rgba(0, 0, 0, .24);
+    border-radius: 0.33vw 1.3vw 0.33vw;
+    box-shadow: 0 0 6px rgba(0, 0, 0, .24);
 }
 
 .item8 {
@@ -566,8 +564,6 @@ table {
 
 .footer button {
     width: 42%;
-    padding: 12px 20px;
-    margin: 8px 0;
     text-transform: none;
 }
 
@@ -591,16 +587,15 @@ table {
     width: 15%;
 }
 
-.item-search ul li {
+.item-search ul li,
+#writeRecipe ul li {
     list-style-type: none;
-    padding: 6px;
+    padding: 0.4vw;
     display: inline-flex;
 }
 
 .item-search button {
     width: 10vw;
-    padding: 12px 20px;
-    margin: 8px 0;
     text-transform: none;
 }
 
@@ -615,9 +610,7 @@ table {
 
 .login-container button {
     width: 98.5%;
-    padding: 12px 20px;
     font-size: 0.9vw;
-    margin: 8px 0;
 }
 
 .login-container a h5 {
@@ -656,11 +649,11 @@ table {
     flex-direction: row;
     justify-content: space-between;
     align-items: stretch;
-    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.10);
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.10);
     background-color: white;
     margin: 0 5%;
     padding-bottom: 1%;
-    border-radius: 4px;
+    border-radius: 0.26vw;
 }
 
 .form-left {
@@ -683,21 +676,13 @@ table {
     font-family: Montserrat, Georgia, serif;
 }
 
-#writeRecipe ul li {
-    list-style-type: none;
-    padding: 6px;
-    display: inline-flex;
-}
-
 #writeRecipe button {
     width: 15vw;
-    padding: 12px 20px;
-    margin: 8px 0;
 }
 
 #addRecipe input {
     width: 12.5vw;
-    margin: 8px 4px;
+    margin: 0.52vw 0.26vw;
 }
 
 .form-right a {
@@ -726,7 +711,7 @@ table {
 }
 
 .validity {
-    padding-left: 4px;
+    padding-left: 0.26vw;
     color: rgb(181, 68, 132);
 }
 
@@ -734,14 +719,14 @@ table {
     display: none;
     text-align: center;
     position: absolute;
-    top: 60px;
-    right: -4vw;
+    top: 3.91vw;
+    right: -5.2vw;
     z-index: 999;
     background: rgba(249, 249, 249, 0.9);
     color: black;
-    padding: 15px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.5);
-    border-radius: 4px;
+    padding: 0.98vw 0.98vw 0 0.98vw;
+    box-shadow: 0 0.52vw 1.05vw 0 rgba(0, 0, 0, 0.5);
+    border-radius: 0.26vw;
     width: 30vw;
 }
 
