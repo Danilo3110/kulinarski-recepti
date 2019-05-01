@@ -35,13 +35,13 @@ async function _render_one_recipe(recipes, location) {
                         <span id="fav_${rec.id}"><i title="Dodaj u omiljene" class="far fa-heart fa-lg offHeart"></i></span>
                         </h3>
                     </div>
-                    <img src="${rec.imgUrl[0] == undefined ? './img/image-not-found.jpg' : rec.imgUrl[0]}" alt="recept" class="image_${rec.id}" title="${rec.title}"><br>
+                    <img src="${rec.imgUrl === '' ? './img/image-not-found.jpg' : rec.imgUrl}" alt="recept" class="image_${rec.id}" title="${rec.title}"><br>
                     <div class="recipe-info">
-                        <h3 class="recipes-ctgr">${rec.category}</h3>
+                        <h3 class="recipes-ctgr">${rec.category === null ? '' : rec.category}</h3>
                         <h2 class="recipes-descr" id="recipes-height">${rec.title}</h2>
                         <hr>
                         <h3 class="recipes-descr"><i class="fas fa-stopwatch fa-lg"></i>&nbsp;${rec.timePrep}&nbsp;min&nbsp;&nbsp;
-                        <i class="fas fa-tachometer-alt fa-lg"></i>&nbsp;${rec.preparation}
+                        <i class="fas fa-tachometer-alt fa-lg"></i>&nbsp;${rec.preparation === null ? '' : rec.preparation}
                         <span id="person"><i class="fas fa-utensils fa-lg"></i>&nbsp;${rec.personNumber === null ? '' : rec.personNumber}</span></h3>
                     </div>
                 </div>`);
@@ -186,7 +186,7 @@ async function renderFullRecipe() {
         const $recipe = $(`<h2>${recipes.title}</h2>
             <h4 class="catgr-title">Kategorija: ${recipes.category}</h4>
             <div class="single-recipe-container">
-            <div class="single-recipe-img"></div>
+            <div class="single-recipe-img"><img src="${recipes.imgUrl === '' ? './img/image-not-found.jpg' : recipes.imgUrl}" alt="${recipes.title}"></div>
             <div class="single-recipe-data">
                 <div>
                     <h5>Kuhinja: ${recipes.kitchen}</h5>
@@ -229,13 +229,6 @@ async function renderFullRecipe() {
             </div><hr>
             </div>`);
         $recipe.appendTo($fullContainer);
-        if ((recipes.imgUrl).length != 0) {
-            recipes.imgUrl.forEach(function (image, index) {
-                $('.single-recipe-img').append(`<img src="${image}" alt="slika${index}">`);
-            });
-        } else {
-            $('.single-recipe-img').append(`<img src="./img/image-not-found.jpg" alt="nema slike">`);
-        }
         for (let i = 1; i <= recipes.ingredients; i++) {
             const qty = 'qty_' + i;
             const ingredient = 'ingredient_' + i;
@@ -320,7 +313,6 @@ function createUser() {
 function createRecipe(methodPost = true) {
     const recipesObj = {};
     const option = [];
-    const imgUrls = [];
 
     if (methodPost) {
         const currentDate = new Date();
@@ -354,10 +346,12 @@ function createRecipe(methodPost = true) {
     recipesObj['steps'] = Number(($('.form-right-2').children('textarea').last().attr('class')).slice(9, ));
 
     if (methodPost) {
-        const files = $("#imgUrl")[0].files;
-        for (const i of files) {
-            imgUrls.push('img/' + i.name);
-            recipesObj.imgUrl = imgUrls;
+        const file = $("#imgUrl")[0].files;
+        if (file.length > 0){
+            const fileUrl = ('img/' + file[0].name);
+            recipesObj['imgUrl'] = fileUrl;
+        } else {
+            recipesObj['imgUrl'] = '';
         }
         const message = 'Uspešno ste objavili novi kulinarski recept';
         (async () => {await postIntoDatabase('recipes', recipesObj, message); await (location.href = 'user_panel.html');})();

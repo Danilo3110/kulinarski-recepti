@@ -16,13 +16,31 @@
 
 ## Project
 ### About project:
+> Projekat - Web sajt "Vrhunski recepti" - baza kulinarskih recepata, osnovne funkcionalnosti:
+- Prikaz kulinarskih recepata na stranici
+- Dinamičko iscrtavanje recepata (JavaScript) na stranici, direktno iz JSON baze
+- Pretraga recepata po kategoriji, nazivu, vremenu pripreme i drugim parametrima, brza pretraga i napredna pretraga
+- Sortirani najnovije dodati recepti
+- Prikaz pojedinacnog recepta sa vise informacija i njegovo dinamicko iscrtavanje (JavaScript) na stranici, sa podacima iz JSON baze
+- Mogućnost dodavanja recepata u omiljene recepte, kao i štampanje recepta
+- Mogucnost download recepta u PDF formatu
+- Registracija korisnika
+- Log-in korisnika
+- Korisnik ima mogucnost da doda novi recept kroz formu za unos podataka i dodavanje slika
+- Korisnički panel za manipulaciju receptima, brisanje svojih recepata i izmena (edit) recepta, kao i prikaz omiljenih recepata
+- Prikaz svih recepata odabranog autora recepta
+- Izdvojene kategorije recepata sa brojem najnovijih recepata u toj kategoriji i mogucnost njihovog prikaza na stranici
+
 > Projekat je uradjen uz pomoc HTML-a, CSS-a, JavaScript-a, i koriscenjem tehnologija:
-- 
--
--
-- 
+- jQuery - za lakšu manipulaciju DOM-om
+- WebPack kao module bundler, sa PostCSS-om i Babel-om
+- Mock JSON server - baza podataka (sa receptima i kirisnicima) u JSON formatu
+- Axios - pravljenje upita i komunikacija sa serverom - bazom (GET, POST, PATCH, DELETE metode)
+- Jest - za pisanje testova za testiranje JavaScript koda
 
 ![product-screenshot]
+<p align="center">
+    <img src="./forReadme/recipesFull.jpg" alt="Screen" width="640" height="500">
 
 ## Technology used
 
@@ -74,8 +92,12 @@ yarn server or npm run server
 │   │   │   └── jquery.js
 │   │   └── main.js
 │   ├── .edittorconfig
+│   ├── add_recipe.html
 │   ├── Favicon.ico
-│   └── index.html
+│   ├── index.html
+│   ├── recipe.html
+│   ├── register.html
+│   └── user_panel.html
 │
 ├── webpack
 │   ├── loaders.js
@@ -119,4 +141,4 @@ yarn server or npm run server
 [json]: https://img.shields.io/badge/JSON-v0.14.2-green.svg?style=popout-square&logo=json
 [webpack]: https://img.shields.io/badge/WebPack-v4.29.6-blue.svg?style=popout-square&logo=webpack
 [axios]: https://img.shields.io/badge/AXIOS-v0.18-lightblue.svg?style=popout-square&logo=codesandbox
-[product-screenshot]: ./forReadme/ss.jpg
+[product-screenshot]: ./forReadme/SS_recipes.jpg
