@@ -58,19 +58,21 @@
                 <div class="form-container">
                     <div class="form-left"><br>
                         <input type="text" name="name" placeholder="Ime i prezime" required>
-                        <span class="validity"></span><br>
+                        <span class="validity name"><i class="fas fa-exclamation-triangle"></i></span><br>
                         <input type="email" name="email" placeholder="e-mail" required>
-                        <span class="validity"></span><br>
-                        <input type="password" name="password" placeholder="Lozinka" required>
-                        <span class="validity"></span><br>
-                        <input type="password" name="passwordRepeat" placeholder="Ponovite&nbsp;lozinku" required>
-                        <span class="validity"></span><br>
+                        <span class="validity email"><i class="fas fa-exclamation-triangle"></i></span><br>
+                        <input type="password" name="password" id="password" placeholder="Lozinka (min 8 karaktera)"
+                            required>
+                        <span class="validity password"><i class="fas fa-exclamation-triangle"></i></span><br>
+                        <input type="password" name="passwordRepeat" id="passwordRepeat"
+                            placeholder="Ponovite&nbsp;lozinku" required>
+                        <span class="validity passwordRepeat"><i class="fas fa-exclamation-triangle"></i></span><br>
                         <hr>
                     </div>
                     <div class="form-right"><br>
                         <input type="text" name="work" placeholder="Zanimanje" required>
-                        <span class="validity"></span><br>
-                        <select name="city" required>
+                        <span class="validity work"><i class="fas fa-exclamation-triangle"></i></span><br>
+                        <select name="city" id="city" required>
                             <option value="" disabled selected>Mesto</option>
                             <option value="Beograd">Beograd</option>
                             <option value="Kragujevac">Kragujevac</option>
@@ -110,16 +112,16 @@
                             <option value="Majdanpek">Majdanpek</option>
                             <option value="Novi Pazar">Novi&nbsp;Pazar</option>
                         </select>
-                        <span class="validity"></span><br>
-                        <input type="tel" name="telephone" placeholder="Telefon" required>
-                        <span class="validity"></span><br>
-                        <textarea class="biography" name="biography" cols="50" rows="8"
-                            placeholder="Biografija"></textarea><br>
+                        <span class="validity city"><i class="fas fa-exclamation-triangle"></i></span><br>
+                        <input type="tel" name="telephone" placeholder="Telefon (npr. 065/31-89-004)" required>
+                        <span class="validity telephone"><i class="fas fa-exclamation-triangle"></i></span><br>
+                        <textarea class="biography" name="biography" cols="50" rows="9"
+                            placeholder="Biografija"></textarea><span class="validity"></span><br>
                         <hr>
                     </div>
                 </div>
                 <hr>
-                <button type="reset">Resetuj&nbsp;sve</button>&nbsp;&nbsp;&nbsp;
+                <button type="reset" id="resetUser">Resetuj&nbsp;sve</button>&nbsp;&nbsp;&nbsp;
                 <button type="button" id="createUser">Registruj&nbsp;se</button>
                 <hr>
             </form>

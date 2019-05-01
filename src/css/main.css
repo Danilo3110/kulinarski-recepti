@@ -725,20 +725,9 @@ table {
     margin: 4% 3%;
 }
 
-input:invalid+span:after,
-select:invalid+span:after {
-    content: '✖';
-    font-size: 1vw;
-    padding-left: 5px;
+.validity {
+    padding-left: 4px;
     color: rgb(181, 68, 132);
-}
-
-input:valid+span:after,
-select:valid+span:after {
-    content: '✓';
-    font-size: 1vw;
-    padding-left: 5px;
-    color: green;
 }
 
 #login-content {

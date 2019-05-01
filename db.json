@@ -510,12 +510,23 @@
       "name": "Nikola",
       "email": "nikola.muncan@gmail.com",
       "password": "djole123",
-      "work": "",
+      "work": "Front-End Web Developer",
       "city": "Beograd",
       "telephone": "011/555-333",
       "biography": "",
       "favorites": [],
       "id": 2
+    },
+    {
+      "name": "Teodora Lukic",
+      "email": "tea.l94@gmail.com",
+      "password": "mina1995",
+      "work": "Molekularni Biolog",
+      "city": "Beograd",
+      "telephone": "011/2772-414",
+      "biography": "",
+      "favorites": [],
+      "id": 3
     }
   ]
 }
