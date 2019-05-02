@@ -38,11 +38,11 @@ async function _render_one_recipe(recipes, location) {
                     <img src="${rec.imgUrl === '' ? './img/image-not-found.jpg' : rec.imgUrl}" alt="recept" class="image_${rec.id}" title="${rec.title}"><br>
                     <div class="recipe-info">
                         <h3 class="recipes-ctgr">${rec.category === null ? '' : rec.category}</h3>
-                        <h2 class="recipes-descr" id="recipes-height">${rec.title}</h2>
+                        <h2 class="recipes-descr recipes-height">${rec.title}</h2>
                         <hr>
                         <h3 class="recipes-descr"><i class="fas fa-stopwatch fa-lg"></i>&nbsp;${rec.timePrep}&nbsp;min&nbsp;&nbsp;
                         <i class="fas fa-tachometer-alt fa-lg"></i>&nbsp;${rec.preparation === null ? '' : rec.preparation}
-                        <span id="person"><i class="fas fa-utensils fa-lg"></i>&nbsp;${rec.personNumber === null ? '' : rec.personNumber}</span></h3>
+                        <span class="person"><i class="fas fa-utensils fa-lg"></i>&nbsp;${rec.personNumber === null ? '' : rec.personNumber}</span></h3>
                     </div>
                 </div>`);
         $recipe.appendTo($recipeContainer);
@@ -348,7 +348,7 @@ function createRecipe(methodPost = true) {
     if (methodPost) {
         const file = $("#imgUrl")[0].files;
         if (file.length > 0){
-            const fileUrl = ('img/' + file[0].name);
+            const fileUrl = ('./img/' + file[0].name);
             recipesObj['imgUrl'] = fileUrl;
         } else {
             recipesObj['imgUrl'] = '';

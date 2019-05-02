@@ -388,7 +388,7 @@ select {
     padding: 0 2%;
 }
 
-#person {
+.person {
     float: right;
     margin-right: 2%;
 }
@@ -399,7 +399,7 @@ select {
     color: rgba(0, 0, 0, .4);
 }
 
-#recipes-height {
+.recipes-height {
     padding: 0;
     text-align: center;
     height: 5%;
