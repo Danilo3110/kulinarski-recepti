@@ -7,7 +7,7 @@ body {
 .container {
     display: grid;
     max-width: 100%;
-    background-image: url(../img/cover1.jpg);
+    background-image: url(../src/img/cover1.jpg);
     background-size: cover;
     background-attachment: fixed;
     background-repeat: no-repeat;
@@ -413,7 +413,6 @@ hr {
     width: 80%;
 }
 
-/*/////////////////////////Full view Recipe/////////////////////////*/
 .single-recipe-container {
     display: flex;
     flex-direction: row;
