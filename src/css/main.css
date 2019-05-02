@@ -761,3 +761,62 @@ table {
     text-align: center;
     margin-bottom: 1.5vw;
 }
+
+@media only screen and (max-width: 1367px) {
+
+    #category-wrap {
+        margin-top: -11vh;
+    }
+
+    .main {
+        padding: 21vh 0 41vh 0;
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+
+    #category-wrap {
+        margin-top: -8vh;
+    }
+
+    .main {
+        padding: 30vh 0 52vh 0;
+    }
+
+    .recipes-container,
+    .user-container {
+        padding: 0 10% 2% 10%;
+    }
+
+    .recipes {
+        width: 45%;
+        margin: 2% 0;
+    }
+
+    .form-container {
+        flex-direction: column;
+    }
+
+    .form-left {
+        margin-left: 0;
+    }
+
+    .form-right {
+        margin-right: 0;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+
+    #category-wrap {
+        margin-top: -6vh;
+    }
+
+    .main {
+        padding: 21vh 0 41vh 0;
+    }
+
+    .recipes {
+        margin: 3% 2%;
+    }
+}
