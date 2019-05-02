@@ -9,9 +9,7 @@ import {addIngredient, addStep, deleteFields, loadRecipeToForm} from './edit_rec
 'use strict';
 
 const serverUrl = `http://localhost:3000`;
-const api = axios.create({
-    baseURL: `${serverUrl}`
-});
+const api = axios.create({baseURL: `${serverUrl}`});
 api.defaults.timeout = 4000;
 
 async function getBase(location) {
@@ -189,7 +187,7 @@ function onLoadPageHTML() {
         return loadRecipeToForm();
     } else if (page.search('/user_panel.html') >= 0) {
         return usersRecipes();
-    } else if (page.search('/register.html') >=0){
+    } else if (page.search('/register.html') >= 0) {
         return $('#writeRecipe input').on('input', validationCheck);
     }
 };

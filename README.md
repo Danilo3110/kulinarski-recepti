@@ -16,9 +16,9 @@
 
 ## Project
 ### About project:
-> Projekat - Web sajt "Vrhunski recepti" - baza kulinarskih recepata, osnovne funkcionalnosti:
+> Projekat - Web sajt "Vrhunski recepti" (baza kulinarskih recepata) - osnovne funkcionalnosti:
 - Prikaz kulinarskih recepata na stranici
-- Dinamičko iscrtavanje recepata (JavaScript) na stranici, direktno iz JSON baze
+- Dinamičko iscrtavanje recepata (JavaScript) na HTML stranici, sa podacima iz JSON baze
 - Pretraga recepata po kategoriji, nazivu, vremenu pripreme i drugim parametrima, brza pretraga i napredna pretraga
 - Sortirani najnovije dodati recepti
 - Prikaz pojedinacnog recepta sa vise informacija i njegovo dinamicko iscrtavanje (JavaScript) na stranici, sa podacima iz JSON baze
@@ -33,13 +33,16 @@
 > Projekat je uradjen uz pomoc HTML-a, CSS-a, JavaScript-a, i koriscenjem tehnologija:
 - jQuery - za lakšu manipulaciju DOM-om
 - WebPack kao module bundler, sa PostCSS-om i Babel-om
-- Mock JSON server - baza podataka (sa receptima i kirisnicima) u JSON formatu
+- Mock JSON server - baza podataka (sa receptima i korisnicima) u JSON formatu
 - Axios - pravljenje upita i komunikacija sa serverom - bazom (GET, POST, PATCH, DELETE metode)
 - Jest - za pisanje testova za testiranje JavaScript koda
 
+> Web site screenshots
+
 ![product-screenshot]
+
 <p align="center">
-    <img src="./forReadme/recipesFull.jpg" alt="Screen" width="640" height="500">
+    <img src="./forReadme/recipesFull.jpg" alt="Screen" width="635" height="450">
 
 ## Technology used
 
@@ -89,7 +92,14 @@ yarn server or npm run server
 │   ├── js
 │   │   ├── vendor
 │   │   │   └── jquery.js
-│   │   └── main.js
+│   │   ├── add_recipe.js
+│   │   ├── edit_recipe.js
+│   │   ├── log_in.js
+│   │   ├── main.js
+│   │   ├── recipe.js
+│   │   ├── register.js
+│   │   └── user_panel.js
+│   │
 │   ├── .edittorconfig
 │   ├── add_recipe.html
 │   ├── Favicon.ico
@@ -131,7 +141,7 @@ yarn server or npm run server
 [build-shield]: https://img.shields.io/badge/build-passing-brightgreen.svg?style=popout
 [code-clean]: https://img.shields.io/badge/code_style-standard-brightgreen.svg?style=popout
 [dependencies]: https://img.shields.io/badge/dependencies-up_to_date-brightgreen.svg?style=popout
-[browsers]: https://img.shields.io/badge/browsers-Chrome|Firefox|Opera|Brave-blue.svg?style=popout
+[browsers]: https://img.shields.io/badge/browsers_tested-Chrome|Firefox|Opera|Brave-blue.svg?style=popout
 [built]: https://img.shields.io/badge/BUILT_BY_DEVELOPER-_Danilo_Lukic-important.svg?style=for-the-badge&logo=git
 [html]: https://img.shields.io/badge/HTML-v5-red.svg?style=popout-square&logo=html5
 [css]: https://img.shields.io/badge/CSS-v3-blue.svg?style=popout-square&logo=css3

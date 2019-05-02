@@ -38,14 +38,17 @@ function createRecipe(methodPost = true) {
 
     if (methodPost) {
         const file = $("#imgUrl")[0].files;
-        if (file.length > 0){
+        if (file.length > 0) {
             const fileUrl = ('./img/' + file[0].name);
             recipesObj['imgUrl'] = fileUrl;
         } else {
             recipesObj['imgUrl'] = '';
         }
         const message = 'Uspešno ste objavili novi kulinarski recept';
-        (async () => {await postIntoDatabase('recipes', recipesObj, message); await (location.href = 'user_panel.html');})();
+        (async () => {
+            await postIntoDatabase('recipes', recipesObj, message);
+            await (location.href = 'user_panel.html');
+        })();
     } else return recipesObj;
 };
 
