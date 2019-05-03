@@ -1,5 +1,7 @@
 import '../css/main.css';
 import '@babel/polyfill';
+import $ from 'jquery';
+import axios from 'axios';
 import {userLogIn, goToUserPanel, checkUserLogIn, addLogOut, logInOut} from './log_in';
 import {validationCheck, createUser} from './register';
 import {renderFullRecipe} from './recipe';

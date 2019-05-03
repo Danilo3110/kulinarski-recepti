@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import {api} from './main';
 import {createRecipe} from './add_recipe';
 'use strict';

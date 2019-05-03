@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import {api, getBase, animateFocus, addToFavorites, renderAllRecipes} from './main';
 'use strict';
 

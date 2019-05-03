@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import {postIntoDatabase} from './main';
 'use strict';
 
@@ -19,10 +20,10 @@ function createRecipe(methodPost = true) {
     recipesObj['authorId'] = JSON.parse(localStorage.getItem('id'));
 
     $('#writeRecipe').find('input:not(:checkbox), textarea, select').each(function () {
-        recipesObj[this.name] = $(this).val();
+        recipesObj[this.name] = this.value;
     });
     $('#writeRecipe').find('input[type="number"]').each(function () {
-        recipesObj[this.name] = Number($(this).val());
+        recipesObj[this.name] = Number(this.value);
     });
     $('#writeRecipe').find(':checkbox').each(function () {
         if ($(this).is(':checked')) {
