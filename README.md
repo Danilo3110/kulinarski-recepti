@@ -53,12 +53,13 @@
 [![css]](#)&nbsp;
 [![js]](#)&nbsp;
 [![jquery]](https://jquery.com)&nbsp;
+[![axios]](https://www.npmjs.com/package/axios)&nbsp;
 [![json]](https://my-json-server.typicode.com/)&nbsp;
-[![webpack]](https://webpack.js.org/)&nbsp;
-[![axios]](https://www.npmjs.com/package/axios)
+[![webpack]](https://webpack.js.org/)
+
 <br>
 <p align="center">
-    <img src="./forReadme/vscode.png" alt="Logo" width="700" height="350">
+    <img src="./forReadme/vscode.png" alt="Logo" width="650" height="335">
 <br>
 
 ## Installation
@@ -69,11 +70,29 @@ git clone https://github.com/Danilo3110/kulinarski-recepti.git
 ```
 > 2. Install NPM packages
 ```sh
-yarn install or npm install or npm i
+npm install
+```
+ - or using Yarn:
+```sh
+yarn install
 ```
 > 3. Start JSON server
 ```sh
-yarn server or npm run server
+npm run server
+```
+- or using Yarn:
+```sh
+yarn server
+```
+
+## Testing the code
+> 1. Test JavaScript code with Jest
+```sh
+npm run test
+```
+ - or using Yarn:
+```sh
+yarn test
 ```
 
 ## Project structure
@@ -86,12 +105,15 @@ yarn server or npm run server
 │
 ├── node_modules
 ├── src
+│   ├──__mocks__
+│   │   ├── fileMock.js
+│   │   └── styleMock.js
 │   ├── css
 │   │   └── main.css
 │   ├── img
 │   ├── js
-│   │   ├── vendor
-│   │   │   └── jquery.js
+│   │   ├── test
+│   │   │   └── main.test.js
 │   │   ├── add_recipe.js
 │   │   ├── edit_recipe.js
 │   │   ├── log_in.js

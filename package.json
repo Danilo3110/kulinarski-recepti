@@ -9,6 +9,27 @@
     "start": "webpack -d --watch --config ./webpack/webpack.config.js --display-error-details",
     "build": "webpack -p --config ./webpack/webpack.config.js --display-error-details"
   },
+  "jest": {
+    "modulePaths": [
+      "/shared/vendor/modules"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "jsx"
+    ],
+    "moduleDirectories": [
+      "node_modules",
+      "bower_components",
+      "shared"
+    ],
+    "transform": {
+      "^.+\\.(js|jsx|ts)$": "babel-jest"
+    },
+    "moduleNameMapper": {
+      "\\.(css|less)$": "<rootDir>/src/__mocks__/styleMock.js",
+      "\\.(gif|ttf|eot|svg)$": "<rootDir>/src/__mocks__/fileMock.js"
+    }
+  },
   "repository": "git+https://github.com/Danilo3110/kulinarski-recepti.git",
   "keywords": [
     "cooking",
