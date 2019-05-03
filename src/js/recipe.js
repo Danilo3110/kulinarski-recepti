@@ -35,7 +35,7 @@ async function renderFullRecipe() {
                 <button type="submit" id="showUserRecipes">Recepti&nbsp;autora</button><br><br>
                 <i class="fas fa-print fa-lg" title="Odštampaj recept"></i>
                 <span id="fav_${recipes.id}"><i class="far fa-heart fa-lg offHeart" title="Dodaj u omiljene"></i></span>
-                <span id="share_${recipes.id}"><i title="Podeli sa drugima" class="fas fa-share-alt fa-lg"></i></span>
+                <span><i title="Broj pregleda" class="far fa-eye fa-lg">&nbsp;${recipes.views}</i></span>
             </div>
             <hr>
             <div class="single-recipe-detailed">
@@ -45,7 +45,7 @@ async function renderFullRecipe() {
             <hr>
             <div class="single-recipe-ingredients">
                 <h3>Potrebni&nbsp;sastojci</h3>
-                <table class="ingredients"></table><br>
+                <table class="ingredients"><tr><th>Količina</th><th>Sastojci</th></tr></table><br>
             </div><hr>
             <div class="single-recipe-steps">
                 <h3>Priprema&nbsp;jela</h3>
@@ -79,6 +79,7 @@ function printRecipe() {
     $('body').empty().html(printcontent);
     print();
     $('body').html(restorepage);
+    location.reload();
 };
 
 export {renderFullRecipe};

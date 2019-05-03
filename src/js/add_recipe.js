@@ -16,6 +16,7 @@ function createRecipe(methodPost = true) {
 
         const recipeNumber = Math.floor(Math.random() * 999);
         recipesObj['recipeNumber'] = recipeNumber;
+        recipesObj['views'] = 0;
     }
     recipesObj['authorId'] = JSON.parse(localStorage.getItem('id'));
 

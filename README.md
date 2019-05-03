@@ -56,7 +56,6 @@
 [![axios]](https://www.npmjs.com/package/axios)&nbsp;
 [![json]](https://my-json-server.typicode.com/)&nbsp;
 [![webpack]](https://webpack.js.org/)
-
 <br>
 <p align="center">
     <img src="./forReadme/vscode.png" alt="Logo" width="650" height="335">

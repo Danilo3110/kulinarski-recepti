@@ -1,21 +1,34 @@
-import {fizzBuzz} from '../main';
+import {getBase} from '../main';
 
-describe('FizzBuzz', () => {
+describe('getBase', () => {
 
-    it('should return number itself', () => {
-        expect(fizzBuzz(7)).toBe('7');
+    it('return all users', async () => {
+        expect.assertions(1);
+        const expected = {
+            "users": []
+        };
+        const users = await getBase('/users');
+        expect(expected).toEqual(expect.not.objectContaining(users));
     });
 
-    it('should return Fizz when divisible by three', () => {
-        expect(fizzBuzz(3)).toBe('Fizz');
+    it('id of the second user', async () => {
+        expect.assertions(1);
+        const user = await getBase('/users/2');
+        const userId = user.id;
+        expect(userId).toBe(2);
     });
 
-    it('should return Buzz when divisible by five', () => {
-        expect(fizzBuzz(5)).toBe('Buzz');
+    it('name of the first user', async () => {
+        expect.assertions(1);
+        const user = await getBase('/users/1');
+        const userName = user.name;
+        expect(userName).toBe('Danilo Lukic');
     });
 
-    it('should return FizzBuzz when divisible by both three and five', () => {
-        expect(fizzBuzz(15)).toBe('FizzBuzz');
+    it('get all recipes from database', async () => {
+        expect.assertions(1);
+        const recipes = await getBase('/recipes');
+        const numberOfRecipes = recipes.length;
+        expect(numberOfRecipes).toBe(24);
     });
-
 });

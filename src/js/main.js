@@ -39,8 +39,8 @@ async function _render_one_recipe(recipes, location) {
         const $recipe = $(`<div class="recipes" id="${rec.id}">
                     <div class="recipes-descr fav">
                         <h3>Datum objave: ${(rec.recipeCreated).slice(0, 10)}
-                        <span id="share_${rec.id}"><i title="Podeli sa drugima" class="fas fa-share-alt fa-lg"></i></span>
                         <span id="fav_${rec.id}"><i title="Dodaj u omiljene" class="far fa-heart fa-lg offHeart"></i></span>
+                        <span id="views_${rec.id}"><i title="Broj pregleda" class="far fa-eye fa-lg">&nbsp;${rec.views}</i></span>
                         </h3>
                     </div>
                     <img src="${rec.imgUrl === '' ? './img/image-not-found.jpg' : rec.imgUrl}" alt="recept" class="image_${rec.id}" title="${rec.title}"><br>
@@ -54,6 +54,7 @@ async function _render_one_recipe(recipes, location) {
                     </div>
                 </div>`);
         $recipe.appendTo($recipeContainer);
+        $(`.image_${rec.id}`).on('click', countViews);
         $(`.image_${rec.id}`).on('click', () => fullRecipes(rec.id));
         $(`#fav_${rec.id}`).on('click', addToFavorites);
     }
@@ -80,6 +81,15 @@ async function addToFavorites() {
             await api.patch(`/users/${localStorage.getItem('id')}`, fav);
         }
     }
+};
+
+async function countViews() {
+    const newViews = {views: 0};
+    const recipeId = event.currentTarget.parentElement.id;
+    const recipe = await getBase(`/recipes/${recipeId}`);
+    const numberOfViews = recipe.views;
+    newViews.views = numberOfViews + 1;
+    (async () => await api.patch(`/recipes/${recipeId}`, newViews))();
 };
 
 async function favorites() {

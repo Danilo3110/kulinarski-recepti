@@ -205,7 +205,7 @@ select {
     grid-area: main;
     text-align: center;
     color: white;
-    padding: 19vh 0 39vh 0;
+    padding: 20vh 0 39vh 0;
 }
 
 .main input {
@@ -488,21 +488,24 @@ hr {
     padding: 0 5%;
 }
 
-table {
+.ingredients {
     border-spacing: 0;
+    margin: auto 10%;
+    padding: 1%;
+    border-radius: 0.33vw 1.3vw 0.33vw;
+    box-shadow: 0 0 6px rgba(0, 0, 0, .24);
 }
 
-.ingredients td {
+.ingredients td,
+.ingredients th {
     width: 45%;
     padding: 3% 0 3% 3%;
     border-bottom: 0.2px solid rgba(55, 66, 82, 0.7);
 }
 
-.ingredients {
-    margin: auto 10%;
-    padding: 1%;
-    border-radius: 0.33vw 1.3vw 0.33vw;
-    box-shadow: 0 0 6px rgba(0, 0, 0, .24);
+.ingredients th {
+    text-transform: uppercase;
+    color: rgb(181, 68, 132);
 }
 
 .steps,
