@@ -15,6 +15,7 @@ function validationCheck() {
     };
     const passwordRepeat = $('#password').val() === $('#passwordRepeat').val();
     const city = $('#city').val() !== null;
+    let incorrectEntry = $(`.${input}`).html(`<i class="fas fa-times-circle"></i>`).css('color', 'rgb(181, 68, 132)');
 
     if (input !== 'passwordRepeat') {
         let inputValue = event.currentTarget.value;
@@ -22,7 +23,7 @@ function validationCheck() {
             $(`.${input}`).html(`<i class="fas fa-check-circle"></i>`).css('color', 'green');
             valid[input] = true;
         } else {
-            $(`.${input}`).html(`<i class="fas fa-times-circle"></i>`).css('color', 'rgb(181, 68, 132)');
+            incorrectEntry;
             valid[input] = false;
         }
     } else {
@@ -30,7 +31,7 @@ function validationCheck() {
             $(`.${input}`).html(`<i class="fas fa-check-circle"></i>`).css('color', 'green');
             valid[input] = true;
         } else {
-            $(`.${input}`).html(`<i class="fas fa-times-circle"></i>`).css('color', 'rgb(181, 68, 132)');
+            incorrectEntry;
             valid[input] = false;
         }
     }
@@ -47,7 +48,7 @@ function createUser() {
     if (valid.name && valid.email && valid.password && valid.work && valid.telephone && valid.passwordRepeat && valid.city) {
         const usersObj = {};
         $("#writeRecipe").find("input, select, textarea").each(function () {
-            usersObj[this.name] = $(this).val();
+            usersObj[this.name] = this.value;
         });
         delete usersObj.passwordRepeat;
         usersObj['favorites'] = [];

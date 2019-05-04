@@ -68,7 +68,7 @@ async function renderFullRecipe() {
         }
         animateFocus('.category');
         $('.fa-print').on('click', printRecipe);
-        $(`#fav_${recipes.id}`).on('click', addToFavorites);
+        $(`#fav_${recipes.id}`).on('click', async () => await addToFavorites(recipes.id));
         $(`#showUserRecipes`).on('click', async () => await renderAllRecipes(`Svi recepti korisnika - ${users.name}:`, `?authorId=${users.id}`));
     }
 };

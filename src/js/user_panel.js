@@ -30,7 +30,7 @@ async function deleteRecipes(message) {
     if (confirm('Da li ste sigurni da želite da obrisete odabrani recept ?')) {
         return await api.delete(`/recipes/${recipe}`)
             .then((response) => { alert(`${message}`); location.reload(); })
-            .catch((error) => { alert(error); });
+            .catch((error) => alert(error));
     }
 };
 
