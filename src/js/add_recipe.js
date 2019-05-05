@@ -14,19 +14,19 @@ function createRecipe(methodPost = true) {
         recipesObj['recipeCreated'] = recipeCreated;
         recipesObj['recipeChecked'] = recipeChecked;
 
-        const recipeNumber = Math.floor(Math.random() * 999);
-        recipesObj['recipeNumber'] = recipeNumber;
+        recipesObj['recipeNumber'] = Math.floor(Math.random() * 999);
         recipesObj['views'] = 0;
     }
     recipesObj['authorId'] = JSON.parse(localStorage.getItem('id'));
-
-    $('#writeRecipe').find('input:not(:checkbox), textarea, select').each(function () {
+    const $writeRecipe = $('#writeRecipe');
+    
+    $writeRecipe.find('input:not(:checkbox), textarea, select').each(function () {
         recipesObj[this.name] = this.value;
     });
-    $('#writeRecipe').find('input[type="number"]').each(function () {
+    $writeRecipe.find('input[type="number"]').each(function () {
         recipesObj[this.name] = Number(this.value);
     });
-    $('#writeRecipe').find(':checkbox').each(function () {
+    $writeRecipe.find(':checkbox').each(function () {
         if ($(this).is(':checked')) {
             recipesObj[this.id] = true;
             option.push(this.value);
@@ -41,8 +41,7 @@ function createRecipe(methodPost = true) {
     if (methodPost) {
         const file = $("#imgUrl")[0].files;
         if (file.length > 0) {
-            const fileUrl = ('./img/' + file[0].name);
-            recipesObj['imgUrl'] = fileUrl;
+            recipesObj['imgUrl'] = ('./img/' + file[0].name);
         } else {
             recipesObj['imgUrl'] = '';
         }

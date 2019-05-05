@@ -15,7 +15,6 @@ function validationCheck() {
     };
     const passwordRepeat = $('#password').val() === $('#passwordRepeat').val();
     const city = $('#city').val() !== null;
-    let incorrectEntry = $(`.${input}`).html(`<i class="fas fa-times-circle"></i>`).css('color', 'rgb(181, 68, 132)');
 
     if (input !== 'passwordRepeat') {
         let inputValue = event.currentTarget.value;
@@ -23,7 +22,7 @@ function validationCheck() {
             $(`.${input}`).html(`<i class="fas fa-check-circle"></i>`).css('color', 'green');
             valid[input] = true;
         } else {
-            incorrectEntry;
+            $(`.${input}`).html(`<i class="fas fa-times-circle"></i>`).css('color', 'rgb(181, 68, 132)');
             valid[input] = false;
         }
     } else {
@@ -31,7 +30,7 @@ function validationCheck() {
             $(`.${input}`).html(`<i class="fas fa-check-circle"></i>`).css('color', 'green');
             valid[input] = true;
         } else {
-            incorrectEntry;
+            $(`.${input}`).html(`<i class="fas fa-times-circle"></i>`).css('color', 'rgb(181, 68, 132)');
             valid[input] = false;
         }
     }

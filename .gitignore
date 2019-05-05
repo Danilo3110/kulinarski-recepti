@@ -1,4 +1,5 @@
 # Include your project-specific ignores in this file
 
+.idea
 node_modules
 yarn.lock

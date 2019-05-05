@@ -22,7 +22,7 @@ async function renderFullRecipe() {
                     Broj osoba: <i class="fas fa-male fa-lg">&nbsp;${recipes.personNumber === null ? '' : recipes.personNumber}</i><br><br>
                     Vreme pripreme: <div class="numStep">${recipes.timePrep}</div>minuta<br><br>
                     Posno:&nbsp;${recipes.posno === true ? 'DA': 'NE'}<br><br>
-                    ${recipes.vegetarijanski === true ? '<img src="./img/vegeterian.png" class="vegeterian">': ''}<br>
+                    ${recipes.vegetarijanski === true ? '<img src="./img/vegeterian.png" class="vegeterian" alt="vegeterian">': ''}<br>
                 </div>
             </div>
             <div class="single-recipe-userData">
@@ -74,11 +74,12 @@ async function renderFullRecipe() {
 };
 
 function printRecipe() {
-    const restorepage = $('body').html();
+    const $body = $('body');
+    const restorepage = $body.html();
     const printcontent = $('#content').clone();
-    $('body').empty().html(printcontent);
+    $body.empty().html(printcontent);
     print();
-    $('body').html(restorepage);
+    $body.html(restorepage);
     location.reload();
 };
 

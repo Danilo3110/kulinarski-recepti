@@ -92,8 +92,7 @@ async function addToFavorites(recipeId) {
 async function favorites() {
     if (localStorage.getItem('validation')) {
         const user = await getBase(`/users/${localStorage.getItem('id')}`);
-        const favorites = user.favorites;
-        fav['favorites'] = favorites;
+        fav['favorites'] = user.favorites;
     }
 };
 
@@ -105,6 +104,24 @@ function loadFavorites() {
                 $(`#fav_${rec}`).html(`<i title="Dodato u omiljene" class="fas fa-heart fa-lg onHeart"></i>`);
             }
         }}, 400);
+};
+
+async function renderCategories() {
+    $('.content').html(`<h1 class="recipes-click-scroll">${'Kategorije'.toUpperCase()}</h1><div class="recipes-container"></div>`);
+    const categories = await getBase('/categories');
+    const categoryName = categories[0].name;
+    const categoryImage = categories[0].image;
+    for (const cat of categoryName) {
+        const $recipeContainer = $('.recipes-container');
+        const $recipe = $(`<div class="recipes" id="category_${categoryName.indexOf(cat)}">
+                            <img src="./img/${categoryImage[categoryName.indexOf(cat)]}" alt="categories" title="${cat}"><br>
+                            <h2 class="recipes-descr recipes-height">${cat.toUpperCase()}</h2>
+                            <hr>
+                        </div>`);
+        $recipe.appendTo($recipeContainer);
+        $(`#category_${categoryName.indexOf(cat)}`).on('click', async () => await renderAllRecipes(`${cat.toUpperCase()}:`, `?category=${cat.toString()}&_sort=id&_order=desc`));
+    }
+    animateFocus('.recipes-click-scroll');
 };
 
 function animateFocus(toLocation) {
@@ -178,7 +195,7 @@ async function categoryButtons() {
     const categories = ['Hladna predjela', 'Salate', 'Glavna jela', 'Torte'];
     for (const cat of categories) {
         let recipes = await getBase(`/recipes?category=${cat}`);
-        $(`#cook${index}`).children('h6').html(`Novi&nbsp;recepti: ${recipes.length == undefined ? 0 : recipes.length}`);
+        $(`#cook${index}`).children('h6').html(`Novi&nbsp;recepti: ${recipes.length === undefined ? 0 : recipes.length}`);
         $(`#cook${index}`).on('click', async () => await renderAllRecipes(`${cat.toUpperCase()}:`, `?category=${cat}&_sort=id&_order=desc`));
         index++;
     }
@@ -201,6 +218,7 @@ function onLoadPageHTML() {
 
 function eventsAll() {
     $('#recipes_showAll').on('click', async () => await renderAllRecipes('Vrhunski recepti - baza recepata:', ''));
+    $('#categories_showAll').on('click', async () => await renderCategories());
     $('#aSearch, #closeSearch').on('click', advancedSearch);
     $('.item4 button').on('click', checkUserLogIn);
     $('#userPanel').on('click', goToUserPanel);
@@ -215,7 +233,7 @@ function eventsAll() {
                             <div class="user-container"></div>`);
         searchRecipes('.user-container', '.recipes-click-scroll');
     });
-    $('#home').on('click', () => animateFocus('#home'));
+    $('#home, #slider').on('click', () => animateFocus('#home'));
     $('#plus-ingredient').on('click', addIngredient);
     $('#minus-ingredient').on('click', () => deleteFields('.form-right-1', 'input'));
     $('#plus-step').on('click', addStep);
