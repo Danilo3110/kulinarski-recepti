@@ -29,6 +29,6 @@ describe('getBase', () => {
         expect.assertions(1);
         const recipes = await getBase('/recipes');
         const numberOfRecipes = recipes.length;
-        expect(numberOfRecipes).toBe(24);
+        expect(numberOfRecipes).toBe(25);
     });
 });

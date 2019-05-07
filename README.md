@@ -19,10 +19,11 @@
 > Projekat - Web sajt "Vrhunski recepti" (baza kulinarskih recepata) - osnovne funkcionalnosti:
 - Prikaz kulinarskih recepata na stranici
 - Dinamičko iscrtavanje recepata (JavaScript) na HTML stranici, sa podacima iz JSON baze
-- Pretraga recepata po kategoriji, nazivu, vremenu pripreme i drugim parametrima, brza pretraga i napredna pretraga
+- Pretraga recepata po kategorijama, izdvojenim kategorijama, brza pretraga i napredna pretraga (nazivu, vremenu pripreme i drugim parametrima...)
 - Sortirani najnovije dodati recepti
 - Prikaz pojedinacnog recepta sa vise informacija i njegovo dinamicko iscrtavanje (JavaScript) na stranici, sa podacima iz JSON baze
 - Mogućnost dodavanja recepata u omiljene recepte, kao i štampanje recepta
+- Broj pregleda za svaki recept pojedinacno
 - Registracija korisnika
 - Log-in korisnika
 - Korisnik ima mogucnost da doda novi recept kroz formu za unos podataka i dodavanje slika
@@ -42,7 +43,7 @@
 ![product-screenshot]
 
 <p align="center">
-    <img src="./forReadme/recipesFull.jpg" alt="Screen" width="635" height="450">
+    <img src="./forReadme/recipesFull.jpg" alt="Screen" width="630" height="430">
 
 ## Technology used
 
@@ -83,6 +84,10 @@ npm run server
 ```sh
 yarn server
 ```
+> 4. Start project
+```sh
+run index.html
+```
 
 ## Testing the code
 > 1. Test JavaScript code with Jest
@@ -114,6 +119,7 @@ yarn test
 │   │   ├── test
 │   │   │   └── main.test.js
 │   │   ├── add_recipe.js
+│   │   ├── animations.js
 │   │   ├── edit_recipe.js
 │   │   ├── log_in.js
 │   │   ├── main.js

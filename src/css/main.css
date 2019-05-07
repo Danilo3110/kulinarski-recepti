@@ -805,7 +805,7 @@ hr {
     }
 
     .main {
-        padding: 30vh 0 52vh 0;
+        padding: 33vh 0 55vh 0;
     }
 
     .recipes-container,
@@ -838,10 +838,17 @@ hr {
     }
 
     .main {
-        padding: 21vh 0 41vh 0;
+        padding: 8vh 0 15vh 0;
     }
 
     .recipes {
         margin: 3% 2%;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+
+    #category-wrap {
+        margin-top: -4vh;
     }
 }

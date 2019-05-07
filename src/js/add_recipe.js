@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import {postIntoDatabase} from './main';
+import {api} from './main';
 'use strict';
 
 function createRecipe(methodPost = true) {
@@ -53,4 +53,10 @@ function createRecipe(methodPost = true) {
     } else return recipesObj;
 };
 
-export {createRecipe};
+async function postIntoDatabase(location, obj, message) {
+    return await api.post(`/${location}`, obj)
+        .then((response) => alert(`${message}`))
+        .catch((error) => alert(error));
+};
+
+export {createRecipe, postIntoDatabase};

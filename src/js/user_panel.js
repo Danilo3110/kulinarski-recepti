@@ -1,5 +1,6 @@
 import $ from 'jquery';
-import {api, getBase, _render_one_recipe, animateFocus, loadFavorites} from './main';
+import {api, getBase, _render_one_recipe, loadFavorites} from './main';
+import {animateFocus} from './animations';
 'use strict';
 
 async function usersRecipes() {

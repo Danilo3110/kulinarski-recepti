@@ -2,6 +2,7 @@ import '../css/main.css';
 import '@babel/polyfill';
 import $ from 'jquery';
 import axios from 'axios';
+import {animateFocus, advancedSearch, animateBackground, animationsAll} from './animations';
 import {userLogIn, goToUserPanel, checkUserLogIn, addLogOut, logInOut} from './log_in';
 import {validationCheck, createUser} from './register';
 import {renderFullRecipe} from './recipe';
@@ -124,52 +125,6 @@ async function renderCategories() {
     animateFocus('.recipes-click-scroll');
 };
 
-function animateFocus(toLocation) {
-    $('html, body').animate({ scrollTop: $(`${toLocation}`).offset().top }, 800);
-};
-
-function advancedSearch() {
-    $('.show').slideToggle(800);
-    animateFocus('#aSearch');
-};
-
-function animateBackground() {
-    const backgrounds = ['url(../src/img/cover1.jpg)', 'url(../src/img/cover2.jpg)', 'url(../src/img/cover5.jpg)', 'url(../src/img/cover6.jpg)', 'url(../src/img/cover3.jpg)'];
-    let index = 0;
-
-    setInterval(function () {
-        index++;
-        if (index === backgrounds.length) {
-            index = 0;
-        }
-        $('.container').css('background-image', backgrounds[index]);
-    }, 8000);
-};
-
-function animationsAll() {
-    $(window).scroll(function () {
-        $('.container').css({ "background-position": "0% " + ($(this).scrollTop() / 50) + "px" });
-    });
-    $(document).ready(() => {
-        $(window).scroll(() => {
-            return $(window).scrollTop() > 100 ?
-                $('.logo, .menu, .login, .item4').css('background', 'rgba(55, 66, 82, 0.95)') :
-                $('.logo, .menu, .login, .item4').css('background', 'rgba(55, 66, 82, 0.7)');
-        });
-    });
-    $(document).ready(() => {
-        $('.recipes-click-scroll').on('click', () => {
-            $('html, body').animate({ scrollTop: $('.recipes-click-scroll').offset().top }, 850);
-        });
-    });
-};
-
-async function postIntoDatabase(location, obj, message) {
-    return await api.post(`/${location}`, obj)
-        .then((response) => alert(`${message}`))
-        .catch((error) => alert(error));
-};
-
 async function searchRecipes(location, animation) {
     const inputsAll = {};
     $('#advancedSearch, #basicSearch').find('input:not(:checkbox), select').each(function () {
@@ -229,8 +184,7 @@ function eventsAll() {
     $('#createRecipe').on('click', () => createRecipe());
     $('#searchRecipesAll, #searchRecipesAll_2').on('click', async () => await searchRecipes('.recipes-container', '.recipes-click-scroll'));
     $('#rec_searchRecipesAll, #rec_searchRecipesAll_2').on('click', () => {
-        $('.content').html(`<h1 class="recipes-click-scroll"></h1>
-                            <div class="user-container"></div>`);
+        $('.content').html(`<h1 class="recipes-click-scroll"></h1><div class="user-container"></div>`);
         searchRecipes('.user-container', '.recipes-click-scroll');
     });
     $('#home, #slider').on('click', () => animateFocus('#home'));
@@ -242,4 +196,4 @@ function eventsAll() {
 
 $(document).on('load', animateBackground(), onLoadPageHTML(), addLogOut(), categoryButtons(), eventsAll(), animationsAll(), favorites(), loadFavorites());
 
-export {api, getBase, renderAllRecipes, _render_one_recipe, postIntoDatabase, addToFavorites, loadFavorites, animateFocus};
+export {api, getBase, renderAllRecipes, _render_one_recipe, addToFavorites, loadFavorites};

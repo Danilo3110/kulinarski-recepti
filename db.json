@@ -1,5 +1,6 @@
 {
-  "recipes": [{
+  "recipes": [
+    {
       "recipeCreated": "24.4.2019. 12:22:44",
       "recipeChecked": "24.4.2019. 18:46:44",
       "recipeNumber": 117,
@@ -957,7 +958,7 @@
       "recipeCreated": "5.5.2019. 23:40:13",
       "recipeChecked": "6.5.2019. 04:40:13",
       "recipeNumber": 839,
-      "views": 3,
+      "views": 5,
       "authorId": 6,
       "category": "Torte",
       "kitchen": "Srpska",
@@ -1003,35 +1004,38 @@
       "id": 25
     }
   ],
-  "categories": [{
-    "name": [
-      "Hladna predjela",
-      "Topla predjela",
-      "Supe i čorbe",
-      "Salate",
-      "Pite i testa",
-      "Glavna jela",
-      "Riba i morski plodovi",
-      "Sosovi",
-      "Torte",
-      "Kolači",
-      "Zimnica"
-    ],
-    "image": [
-      "Hladna_predjela.jpg",
-      "Topla_predjela.jpg",
-      "Supe_i_corbe.jpg",
-      "Salate.jpg",
-      "Pite_i_testa.jpg",
-      "Glavna_jela.jpeg",
-      "Riba_i_morski_plodovi.jpg",
-      "Sosovi.jpg",
-      "Torte.jpeg",
-      "Kolaci.jpg",
-      "Zimnica.png"
-    ]
-  }],
-  "users": [{
+  "categories": [
+    {
+      "name": [
+        "Hladna predjela",
+        "Topla predjela",
+        "Supe i čorbe",
+        "Salate",
+        "Pite i testa",
+        "Glavna jela",
+        "Riba i morski plodovi",
+        "Sosovi",
+        "Torte",
+        "Kolači",
+        "Zimnica"
+      ],
+      "image": [
+        "Hladna_predjela.jpg",
+        "Topla_predjela.jpg",
+        "Supe_i_corbe.jpg",
+        "Salate.jpg",
+        "Pite_i_testa.jpg",
+        "Glavna_jela.jpeg",
+        "Riba_i_morski_plodovi.jpg",
+        "Sosovi.jpg",
+        "Torte.jpeg",
+        "Kolaci.jpg",
+        "Zimnica.png"
+      ]
+    }
+  ],
+  "users": [
+    {
       "name": "Danilo Lukic",
       "email": "lukic3@sbb.rs",
       "password": "danilo31",

@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import {postIntoDatabase} from './main';
+import {postIntoDatabase} from './add_recipe';
 'use strict';
 
 const valid = {};
