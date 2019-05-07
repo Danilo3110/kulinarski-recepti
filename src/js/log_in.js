@@ -15,12 +15,12 @@ async function userLogIn() {
         }
     }
     if (JSON.parse(localStorage.getItem('validation'))) {
-        alert(`Uspesno ste se ulogovali!\nDobro došao/la ${localStorage.getItem('user')}`);
+        alert(`Uspesno ste se prijavili!\nDobro došao/la ${localStorage.getItem('user')}`);
         location.href = 'index.html';
     } else {
         $('#userEmail').css('border', '1.5px solid rgb(250, 100, 100)');
         $('#pass').css('border', '1.5px solid rgb(250, 100, 100)');
-        $('#alert').html(`Nije dobar unos podataka za login`).css('color', 'rgb(250, 100, 100)');
+        $('#alert').html(`Nije dobar unos podataka za prijavu`).css('color', 'rgb(250, 100, 100)');
     }
 };
 
@@ -28,13 +28,13 @@ function goToUserPanel() {
     if (localStorage.getItem('validation')) {
         location.href = 'user_panel.html';
     } else {
-        alert('Da bi koristili korisnički panel, morate biti ulogovani!');
+        alert('Da bi koristili korisnički panel, morate se registrovati / biti prijavljeni!');
     }
 };
 
 function checkUserLogIn() {
     return localStorage.getItem('validation') ? location.href = 'add_recipe.html' :
-        alert('Da bi dodali vaš kulinarski recept, morate biti ulogovani!');
+        alert('Da bi dodali vaš kulinarski recept, morate se registrovati / biti prijavljeni!');
 };
 
 function addLogOut() {
@@ -50,7 +50,7 @@ function logInOut() {
         localStorage.clear();
         sessionStorage.clear();
         addLogOut();
-        alert('Uspesno ste se izlogovali!');
+        alert('Uspesno ste se odjavili!');
         location.href = 'index.html';
     } else {
         $(this).next('#login-content').slideToggle(500);
