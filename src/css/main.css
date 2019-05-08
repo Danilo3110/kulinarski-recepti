@@ -1,7 +1,8 @@
 body {
     margin: 0;
-    font-family: Georgia, serif;
+    font-family: 'Ubuntu', sans-serif;
     font-size: 1vw;
+    background-color: whitesmoke;
 }
 
 .container {
@@ -13,6 +14,7 @@ body {
     background-repeat: no-repeat;
     transition: background-position 0.05s linear;
     transition: background-image 3.5s ease-in-out;
+    grid-template-columns: 17.7vw 17.3vw 17.3vw 28vw auto;
     grid-template-areas: 'logo menu menu login addRecipe''main main main main main''category category category category category''item-search item-search item-search item-search item-search''recipes recipes recipes recipes recipes''footer footer footer footer footer';
 }
 
@@ -33,7 +35,7 @@ body {
 
 .logo img {
     margin-left: 3.65vw;
-    width: 5.5vw;
+    width: 31%;
 }
 
 .menu {
@@ -43,7 +45,7 @@ body {
 }
 
 .menu ul {
-    padding-left: 2.28vw;
+    padding-left: 1.9vw;
     margin-block-start: 1.2vw;
 }
 
@@ -83,7 +85,7 @@ body {
     grid-area: login;
     color: white;
     text-align: left;
-    padding-left: 11vw;
+    padding-left: 12.2vw;
 }
 
 .login i {
@@ -108,12 +110,12 @@ body {
 
 .item4 button {
     width: 80%;
-    padding: 0.65vw 0.52vw;
+    padding: 0.64vw 0.52vw;
     margin: 2.5% 0;
 }
 
 button {
-    font-family: Montserrat, Georgia, serif;
+    font-family: 'Ubuntu', sans-serif;
     font-size: 1vw;
     padding: 0.8vw 1.3vw;
     margin: 0.52vw 0;
@@ -137,7 +139,7 @@ button:hover {
 input,
 textarea,
 select {
-    font-family: Montserrat, Georgia, serif;
+    font-family: 'Ubuntu', sans-serif;
     font-size: 1vw;
     padding: 0.8vw 1.3vw;
     margin: 0.52vw 0;
@@ -322,7 +324,7 @@ select {
 #cook4,
 #user1,
 #fav1 {
-    font-family: Montserrat, Georgia, serif;
+    font-family: 'Ubuntu', sans-serif;
     box-sizing: border-box;
     width: 12vw;
     height: 81%;
@@ -698,7 +700,7 @@ hr {
     resize: none;
     width: 24vw;
     text-align: justify;
-    font-family: Montserrat, Georgia, serif;
+    font-family: 'Ubuntu', sans-serif;
 }
 
 #writeRecipe button {

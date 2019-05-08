@@ -14,7 +14,7 @@ function validationCheck() {
         telephone: /^\d{3}\/(\d{2,3}-?\d{2,3}-?\d{2,}|\d{3,4}-?\d{3,4})$/
     };
     const passwordRepeat = $('#password').val() === $('#passwordRepeat').val();
-    const city = $('#city').val() !== null;
+    const passwordRepeatTest = RegEx.password.test($('#passwordRepeat').val());
 
     if (input !== 'passwordRepeat') {
         let inputValue = event.currentTarget.value;
@@ -26,7 +26,7 @@ function validationCheck() {
             valid[input] = false;
         }
     } else {
-        if (passwordRepeat) {
+        if (passwordRepeat && passwordRepeatTest) {
             $(`.${input}`).html(`<i class="fas fa-check-circle"></i>`).css('color', 'green');
             valid[input] = true;
         } else {
@@ -34,6 +34,10 @@ function validationCheck() {
             valid[input] = false;
         }
     }
+};
+
+function validCity() {
+    const city = $('#city').val() !== null;
     if (city) {
         $(`.city`).html(`<i class="fas fa-check-circle"></i>`).css('color', 'green');
         valid['city'] = true;
@@ -60,4 +64,4 @@ function createUser() {
     }
 };
 
-export {validationCheck, createUser};
+export {validationCheck, validCity, createUser};

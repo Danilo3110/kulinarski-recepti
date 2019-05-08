@@ -4,7 +4,7 @@ import $ from 'jquery';
 import axios from 'axios';
 import {animateFocus, advancedSearch, animateBackground, animationsAll} from './animations';
 import {userLogIn, goToUserPanel, checkUserLogIn, addLogOut, logInOut} from './log_in';
-import {validationCheck, createUser} from './register';
+import {validationCheck, validCity, createUser} from './register';
 import {renderFullRecipe} from './recipe';
 import {createRecipe} from './add_recipe';
 import {usersRecipes} from './user_panel';
@@ -167,7 +167,8 @@ function onLoadPageHTML() {
     } else if (page.search('/user_panel.html') >= 0) {
         return usersRecipes();
     } else if (page.search('/register.html') >= 0) {
-        return $('#writeRecipe input').on('input', validationCheck);
+        $('#writeRecipe input').on('input', validationCheck);
+        $('#writeRecipe select').on('change', validCity);
     }
 };
 
